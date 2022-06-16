@@ -19,10 +19,13 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     font-family: 'Anek Malayalam', sans-serif;
     overflow-x: hidden;
+    height: 100vh;
   }
   #root {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    object-fit: contain;
   }
   h1,
   h2,
