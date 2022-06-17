@@ -31,6 +31,7 @@ const HeaderContainer = styled.header`
 
   @media (max-width: 800px) {
     flex-direction: column;
+    justify-content: center;
     gap: 2rem;
   }
 
@@ -41,31 +42,42 @@ const HeaderContainer = styled.header`
   .header-div {
     display: flex;
     justify-content: space-between;
-    gap: 4rem;
+    gap: 3rem;
+
+    @media (max-width: 800px) {
+      gap: 4rem;
+    }
   }
 
   .container {
-    position: relative;
     display: flex;
-    gap: 1rem;
     align-items: center;
-    pointer-events: none;
-  }
-  svg {
-    pointer-events: all;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    padding-top: 0rem;
     cursor: pointer;
+
+    @media (max-width: 800px) {
+      padding: 0;
+    }
   }
-  svg + span {
+
+  .container span {
     position: relative;
     font-size: 1.8rem;
     left: -1rem;
     opacity: 0;
-    transition: 150ms;
     white-space: nowrap;
+    transition: 150ms;
+
+    @media (max-width: 800px) {
+      opacity: 0.9;
+      left: 0;
+    }
   }
 
-  svg:hover + span {
+  .container:hover span {
     left: 0;
-    opacity: 1;
+    opacity: 0.9;
   }
 `

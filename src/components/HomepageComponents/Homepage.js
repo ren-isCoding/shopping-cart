@@ -19,4 +19,8 @@ const HomepageContainer = styled.div`
   background-position: center;
   padding-top: 10rem;
   padding-left: 7rem;
+
+  @media (max-width: 800px) {
+    padding: 10%;
+  }
 `
