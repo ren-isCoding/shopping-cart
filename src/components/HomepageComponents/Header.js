@@ -1,25 +1,71 @@
 import React from "react"
 import styled from "styled-components"
+import SearchSVG from "../../assets/svg/Search"
+import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
 export default function Header() {
   return (
     <HeaderContainer>
-      <h2>FAKE COMPONENTS</h2>
-      <div>
-        <span>Search</span>
-        <span>Cart</span>
+      <h3>FAKE COMPONENTS</h3>
+      <div className="header-div">
+        <div className="container">
+          <SearchSVG />
+          <span>Search</span>
+        </div>
+        <div className="container">
+          <ShoppingCartSVG />
+          <span>Shopping Cart</span>
+        </div>
       </div>
     </HeaderContainer>
   )
 }
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.header`
   color: whitesmoke;
   display: flex;
-  gap: 30rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80rem;
+  max-height: 10rem;
 
-  div {
+  @media (max-width: 800px) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  h3 {
+    letter-spacing: 0.7rem;
+  }
+
+  .header-div {
     display: flex;
-    gap: 5rem;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+
+  .container {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    pointer-events: none;
+  }
+  svg {
+    pointer-events: all;
+    cursor: pointer;
+  }
+  svg + span {
+    position: relative;
+    font-size: 1.8rem;
+    left: -1rem;
+    opacity: 0;
+    transition: 150ms;
+    white-space: nowrap;
+  }
+
+  svg:hover + span {
+    left: 0;
+    opacity: 1;
   }
 `

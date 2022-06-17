@@ -1,5 +1,5 @@
 import React from "react"
-import bg from "../../assets/bg.jpg"
+import bg from "../../assets/img/bg.jpg"
 import styled from "styled-components"
 import Header from "./Header"
 
@@ -17,4 +17,6 @@ const HomepageContainer = styled.div`
   background-image: url(${bg});
   background-size: cover;
   background-position: center;
+  padding-top: 10rem;
+  padding-left: 7rem;
 `
