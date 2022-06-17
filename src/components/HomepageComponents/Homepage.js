@@ -1,9 +1,14 @@
 import React from "react"
 import bg from "../../assets/bg.jpg"
 import styled from "styled-components"
+import Header from "./Header"
 
 export default function Homepage() {
-  return <HomepageContainer></HomepageContainer>
+  return (
+    <HomepageContainer>
+      <Header />
+    </HomepageContainer>
+  )
 }
 
 const HomepageContainer = styled.div`
