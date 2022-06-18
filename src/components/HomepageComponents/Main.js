@@ -8,7 +8,7 @@ export default function Main() {
       <span className="main-text">BUILD YOUR PC NOW</span>
       <div className="gif-container">
         <img src={gif} />
-        <a className="shop-btn" href="store">
+        <a href="store" className="shop-btn">
           SHOP NOW
         </a>
       </div>
