@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Homepage from "./components/HomepageComponents/Homepage"
 import Store from "./components/StoreComponents/Store"
 
-export default function RouteSwitch() {
+export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
