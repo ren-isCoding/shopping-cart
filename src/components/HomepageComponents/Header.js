@@ -37,6 +37,7 @@ const HeaderContainer = styled.header`
 
   h3 {
     letter-spacing: 0.7rem;
+    font-weight: lighter;
   }
 
   .header-div {
