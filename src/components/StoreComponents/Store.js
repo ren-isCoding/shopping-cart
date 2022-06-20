@@ -1,13 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 import Header from "./Header"
-// import Main from "./Main"
+import Main from "./Main"
 
 export default function Store() {
   return (
     <StoreContainer>
       <Header />
-      {/* <Main /> */}
+      <Main />
     </StoreContainer>
   )
 }
