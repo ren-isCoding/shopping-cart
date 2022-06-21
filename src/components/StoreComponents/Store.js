@@ -3,11 +3,11 @@ import styled from "styled-components"
 import Header from "./Header"
 import Main from "./Main"
 
-export default function Store() {
+export default function Store({ pcParts }) {
   return (
     <StoreContainer>
       <Header />
-      <Main />
+      <Main pcParts={pcParts} />
     </StoreContainer>
   )
 }
