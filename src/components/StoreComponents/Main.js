@@ -14,5 +14,4 @@ export default function Main({ pcParts }) {
 
 const MainContainer = styled.div`
   display: flex;
-  gap: 10rem;
 `

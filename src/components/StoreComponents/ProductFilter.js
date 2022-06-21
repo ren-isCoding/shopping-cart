@@ -22,6 +22,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4rem;
+  margin-right: 20rem;
   span {
     font-weight: 600;
   }
