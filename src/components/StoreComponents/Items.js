@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 
-export default function Products({ pcParts }) {
-  const { cpu } = pcParts
-  const cpuProducts = cpu.map((cpuObj) => {
+export default function Items({ pcParts }) {
+  const { cpu, gpu } = pcParts
+  const cpuItems = cpu.map((cpuObj) => {
     return (
       <div className="product-div" key={cpuObj.id}>
         <img src={cpuObj.img} />
@@ -12,8 +12,19 @@ export default function Products({ pcParts }) {
       </div>
     )
   })
-  console.log(cpu)
-  return <Container>{cpuProducts}</Container>
+  const gpuItems = gpu.map((gpuObj) => {
+    return (
+      <div className="product-div" key={gpuObj.id}>
+        <img src={gpuObj.img} />
+        <h3>{gpuObj.name}</h3>
+        <span>{gpuObj.price}</span>
+      </div>
+    )
+  })
+
+  const allItems = [...cpuItems, ...gpuItems]
+
+  return <Container>{allItems}</Container>
 }
 
 const Container = styled.div`
@@ -33,7 +44,7 @@ const Container = styled.div`
       background: #e8e8e8;
       width: 40rem;
       height: 30rem;
-      object-fit: cover;
+      object-fit: contain;
       margin-bottom: 1rem;
     }
 

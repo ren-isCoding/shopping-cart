@@ -1,13 +1,13 @@
 import React from "react"
 import styled from "styled-components"
-import ProductFilter from "./ProductFilter"
-import Products from "./Products"
+import ItemFilter from "./ItemFilter"
+import Items from "./Items"
 
 export default function Main({ pcParts }) {
   return (
     <MainContainer>
-      <ProductFilter />
-      <Products pcParts={pcParts} />
+      <ItemFilter />
+      <Items pcParts={pcParts} />
     </MainContainer>
   )
 }
