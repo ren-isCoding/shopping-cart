@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 export default function Items({ pcParts }) {
-  const { cpu, gpu } = pcParts
+  const { cpu, gpu, mobo } = pcParts
   const cpuItems = cpu.map((cpuObj) => {
     return (
       <div className="product-div" key={cpuObj.id}>
@@ -12,6 +12,7 @@ export default function Items({ pcParts }) {
       </div>
     )
   })
+
   const gpuItems = gpu.map((gpuObj) => {
     return (
       <div className="product-div" key={gpuObj.id}>
@@ -22,7 +23,17 @@ export default function Items({ pcParts }) {
     )
   })
 
-  const allItems = [...cpuItems, ...gpuItems]
+  const moboItems = mobo.map((moboObj) => {
+    return (
+      <div className="product-div" key={moboObj.id}>
+        <img src={moboObj.img} />
+        <h3>{moboObj.name}</h3>
+        <span>{moboObj.price}</span>
+      </div>
+    )
+  })
+
+  const allItems = [...cpuItems, ...gpuItems, ...moboItems]
 
   return <Container>{allItems}</Container>
 }
