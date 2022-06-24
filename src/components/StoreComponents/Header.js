@@ -6,7 +6,9 @@ import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 export default function Header() {
   return (
     <HeaderContainer>
-      <h3>FAKE COMPONENTS</h3>
+      <h3>
+        <a href="/"> FAKE COMPONENTS</a>
+      </h3>
       <div className="header-div">
         <div className="container">
           <SearchSVG />
@@ -37,6 +39,9 @@ const HeaderContainer = styled.header`
   h3 {
     letter-spacing: 0.7rem;
     font-weight: lighter;
+    a {
+      color: inherit;
+    }
   }
 
   .header-div {
