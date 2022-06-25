@@ -1,17 +1,38 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 
-export default function ItemFilter() {
+export default function ItemFilter({ pcParts, setSelectedItems }) {
+  const { cpu, gpu, mobo, ram } = pcParts
+  const [selectedItemsText, setSelectedItemsText] = useState("All Products")
+
+  const selectAllProducts = () => {
+    setSelectedItems([])
+    setSelectedItemsText("All Products")
+  }
+  const selectCpuItems = () => {
+    setSelectedItems(cpu)
+    setSelectedItemsText("Processors")
+  }
+  const selectGpuItems = () => {
+    setSelectedItems(gpu)
+    setSelectedItemsText("Video Cards")
+  }
+  const selectMoboItems = () => {
+    setSelectedItems(mobo)
+    setSelectedItemsText("Motherboards")
+  }
+
   return (
     <Container>
       <div>
         <span>Store/</span>
-        <h2>All Products</h2>
+        <h2>{selectedItemsText}</h2>
       </div>
       <ul>
-        <li>Processors</li>
-        <li>Video Cards</li>
-        <li>Motherboards</li>
+        <li onClick={(e) => selectAllProducts()}>All Products</li>
+        <li onClick={(e) => selectCpuItems()}>Processors</li>
+        <li onClick={(e) => selectGpuItems()}>Video Cards</li>
+        <li onClick={(e) => selectMoboItems()}>Motherboards</li>
         <li>RAM</li>
       </ul>
     </Container>
@@ -27,11 +48,38 @@ const Container = styled.div`
     font-weight: 600;
   }
 
+  h2 {
+    white-space: nowrap;
+  }
+
   ul {
-    list-style: none;
     font-weight: 600;
-    display: flex;
-    flex-direction: column;
     gap: 1rem;
+    width: 15rem;
+  }
+
+  li {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    z-index: 2;
+    margin-bottom: 1rem;
+  }
+
+  li::after {
+    content: "";
+    background: black;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    bottom: 0.2rem;
+    height: 0.2rem;
+    transform: scaleX(0);
+    transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-origin: 0 50%;
+  }
+  li:hover::after {
+    transform: scaleX(1);
   }
 `

@@ -1,41 +1,56 @@
 import React from "react"
 import styled from "styled-components"
 
-export default function Items({ pcParts }) {
-  const { cpu, gpu, mobo } = pcParts
-  const cpuItems = cpu.map((cpuObj) => {
-    return (
-      <div className="product-div" key={cpuObj.id}>
-        <img src={cpuObj.img} />
-        <h3>{cpuObj.name}</h3>
-        <span>{cpuObj.price}</span>
-      </div>
-    )
-  })
+export default function Items({ pcParts, selectedItems }) {
+  if (selectedItems.length) {
+    const filteredItems = selectedItems.map((item) => {
+      return (
+        <div className="product-div" key={item.id}>
+          <img src={item.img} />
+          <h3>{item.name}</h3>
+          <span>{item.price}</span>
+        </div>
+      )
+    })
 
-  const gpuItems = gpu.map((gpuObj) => {
-    return (
-      <div className="product-div" key={gpuObj.id}>
-        <img src={gpuObj.img} />
-        <h3>{gpuObj.name}</h3>
-        <span>{gpuObj.price}</span>
-      </div>
-    )
-  })
+    return <Container>{filteredItems}</Container>
+  } else {
+    const { cpu, gpu, mobo } = pcParts
 
-  const moboItems = mobo.map((moboObj) => {
-    return (
-      <div className="product-div" key={moboObj.id}>
-        <img src={moboObj.img} />
-        <h3>{moboObj.name}</h3>
-        <span>{moboObj.price}</span>
-      </div>
-    )
-  })
+    const cpuItems = cpu.map((cpuObj) => {
+      return (
+        <div className="product-div" key={cpuObj.id}>
+          <img src={cpuObj.img} />
+          <h3>{cpuObj.name}</h3>
+          <span>{cpuObj.price}</span>
+        </div>
+      )
+    })
 
-  const allItems = [...cpuItems, ...gpuItems, ...moboItems]
+    const gpuItems = gpu.map((gpuObj) => {
+      return (
+        <div className="product-div" key={gpuObj.id}>
+          <img src={gpuObj.img} />
+          <h3>{gpuObj.name}</h3>
+          <span>{gpuObj.price}</span>
+        </div>
+      )
+    })
 
-  return <Container>{allItems}</Container>
+    const moboItems = mobo.map((moboObj) => {
+      return (
+        <div className="product-div" key={moboObj.id}>
+          <img src={moboObj.img} />
+          <h3>{moboObj.name}</h3>
+          <span>{moboObj.price}</span>
+        </div>
+      )
+    })
+
+    const allItems = [...cpuItems, ...gpuItems, ...moboItems]
+
+    return <Container>{allItems}</Container>
+  }
 }
 
 const Container = styled.div`

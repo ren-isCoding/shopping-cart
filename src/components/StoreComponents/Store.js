@@ -3,11 +3,16 @@ import styled from "styled-components"
 import Header from "./Header"
 import Main from "./Main"
 
-export default function Store({ pcParts }) {
+export default function Store({ pcParts, setPcParts, selectedItems, setSelectedItems }) {
   return (
     <StoreContainer>
       <Header />
-      <Main pcParts={pcParts} />
+      <Main
+        pcParts={pcParts}
+        setPcParts={setPcParts}
+        selectedItems={selectedItems}
+        setSelectedItems={setSelectedItems}
+      />
     </StoreContainer>
   )
 }

@@ -3,11 +3,15 @@ import styled from "styled-components"
 import ItemFilter from "./ItemFilter"
 import Items from "./Items"
 
-export default function Main({ pcParts }) {
+export default function Main({ pcParts, selectedItems, setSelectedItems }) {
   return (
     <MainContainer>
-      <ItemFilter />
-      <Items pcParts={pcParts} />
+      <ItemFilter
+        pcParts={pcParts}
+        selectedItems={selectedItems}
+        setSelectedItems={setSelectedItems}
+      />
+      <Items pcParts={pcParts} selectedItems={selectedItems} />
     </MainContainer>
   )
 }

@@ -6,11 +6,22 @@ import PcPartsList from "./utils/PcPartsList"
 
 export default function App() {
   const [pcParts, setPcParts] = useState(PcPartsList)
+  const [selectedItems, setSelectedItems] = useState([])
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/store" element={<Store pcParts={pcParts} />} />
+        <Route
+          path="/store"
+          element={
+            <Store
+              pcParts={pcParts}
+              setPcParts={setPcParts}
+              selectedItems={selectedItems}
+              setSelectedItems={setSelectedItems}
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   )
