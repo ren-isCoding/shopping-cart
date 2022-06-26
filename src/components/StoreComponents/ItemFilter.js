@@ -24,7 +24,7 @@ export default function ItemFilter({ pcParts, setSelectedItems }) {
 
   return (
     <Container>
-      <div>
+      <div className="section-title">
         <span>Store/</span>
         <h2>{selectedItemsText}</h2>
       </div>
@@ -40,6 +40,9 @@ export default function ItemFilter({ pcParts, setSelectedItems }) {
 }
 
 const Container = styled.div`
+  @media (max-width: 1050px) {
+    display: none;
+  }
   display: flex;
   flex-direction: column;
   gap: 4rem;
@@ -48,8 +51,12 @@ const Container = styled.div`
     font-weight: 600;
   }
 
+  .section-title {
+    margin-bottom: 4rem;
+  }
   h2 {
     white-space: nowrap;
+    position: absolute;
   }
 
   ul {

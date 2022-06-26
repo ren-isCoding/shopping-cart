@@ -58,18 +58,26 @@ const Container = styled.div`
   justify-items: center;
   justify-content: center;
   place-self: center;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  @media (max-width: 1660px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 1370px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
   gap: 2rem;
 
   .product-div {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 30rem;
+    height: 30rem;
 
     img {
       background: #e8e8e8;
-      width: 40rem;
-      height: 30rem;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
       margin-bottom: 1rem;
     }
