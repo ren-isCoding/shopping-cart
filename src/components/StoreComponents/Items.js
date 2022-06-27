@@ -21,7 +21,7 @@ export default function Items({ pcParts, selectedItems }) {
       return (
         <div className="product-div" key={cpuObj.id}>
           <img src={cpuObj.img} />
-          <h3>{cpuObj.name}</h3>
+          <h4>{cpuObj.name}</h4>
           <span>{cpuObj.price}</span>
         </div>
       )
@@ -31,7 +31,7 @@ export default function Items({ pcParts, selectedItems }) {
       return (
         <div className="product-div" key={gpuObj.id}>
           <img src={gpuObj.img} />
-          <h3>{gpuObj.name}</h3>
+          <h4>{gpuObj.name}</h4>
           <span>{gpuObj.price}</span>
         </div>
       )
@@ -41,7 +41,7 @@ export default function Items({ pcParts, selectedItems }) {
       return (
         <div className="product-div" key={moboObj.id}>
           <img src={moboObj.img} />
-          <h3>{moboObj.name}</h3>
+          <h4>{moboObj.name}</h4>
           <span>{moboObj.price}</span>
         </div>
       )
@@ -65,7 +65,7 @@ const Container = styled.div`
   @media (max-width: 1370px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  gap: 2rem;
+  gap: 4rem 3rem;
 
   .product-div {
     display: flex;
@@ -73,6 +73,7 @@ const Container = styled.div`
     align-items: center;
     width: 30rem;
     height: 30rem;
+    cursor: pointer;
 
     img {
       background: #e8e8e8;
@@ -80,10 +81,16 @@ const Container = styled.div`
       height: 100%;
       object-fit: contain;
       margin-bottom: 1rem;
+      transition: 120ms ease-in;
     }
 
-    h3 {
+    h4 {
       font-weight: 600;
+      white-space: nowrap;
     }
+  }
+
+  .product-div:hover img {
+    transform: scale(1.07);
   }
 `
