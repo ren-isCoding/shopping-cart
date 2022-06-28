@@ -9,15 +9,15 @@ export default function Header() {
       <h3>
         <a href="/"> FAKE COMPONENTS</a>
       </h3>
-      <div className="header-div">
-        <div className="container">
+      <div className="search-bar">
+        <input type="text" placeholder="Search" />
+        <div className="search-icon">
           <SearchSVG />
-          <span>Search</span>
         </div>
-        <div className="container">
-          <ShoppingCartSVG />
-          <span>Shopping Cart</span>
-        </div>
+      </div>
+      <div className="container">
+        <ShoppingCartSVG />
+        <span>Shopping Cart</span>
       </div>
     </HeaderContainer>
   )
@@ -27,7 +27,7 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 80rem;
+  width: 100%;
   max-height: 10rem;
 
   @media (max-width: 800px) {
@@ -44,13 +44,24 @@ const HeaderContainer = styled.header`
     }
   }
 
-  .header-div {
+  .search-bar {
     display: flex;
-    justify-content: space-between;
-    gap: 3rem;
-
-    @media (max-width: 800px) {
-      gap: 4rem;
+    gap: 0.7rem;
+    background: black;
+    color: whitesmoke;
+    border-radius: 5px;
+    padding-right: 1rem;
+    input {
+      color: black;
+      border: 0.1rem solid black;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      padding-left: 1rem;
+    }
+    .search-icon {
+      display: flex;
+      transform: scale(0.8);
+      cursor: pointer;
     }
   }
 

@@ -106,4 +106,8 @@ const Container = styled.div`
       transform: translate(0, 1rem);
     }
   }
+
+  .product-div:hover img {
+    transform: scale(1.07);
+  }
 `
