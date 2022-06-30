@@ -7,7 +7,7 @@ export default function Items({ pcParts, selectedItems }) {
       return (
         <div className="product-div" key={item.id}>
           <img src={item.img} />
-          <h3>{item.name}</h3>
+          <h4>{item.name}</h4>
           <span>{item.price}</span>
         </div>
       )
