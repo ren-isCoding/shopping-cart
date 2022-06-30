@@ -15,7 +15,7 @@ export default function Items({ pcParts, selectedItems }) {
 
     return <Container>{filteredItems}</Container>
   } else {
-    const { cpu, gpu, mobo } = pcParts
+    const { cpu, gpu, mobo, ram } = pcParts
 
     const cpuItems = cpu.map((cpuObj) => {
       return (
@@ -47,7 +47,17 @@ export default function Items({ pcParts, selectedItems }) {
       )
     })
 
-    const allItems = [...cpuItems, ...gpuItems, ...moboItems]
+    const ramItems = ram.map((ramObj) => {
+      return (
+        <div className="product-div" key={ramObj.id}>
+          <img src={ramObj.img} />
+          <h4>{ramObj.name}</h4>
+          <span>{ramObj.price}</span>
+        </div>
+      )
+    })
+
+    const allItems = [...cpuItems, ...gpuItems, ...moboItems, ...ramItems]
 
     return <Container>{allItems}</Container>
   }
