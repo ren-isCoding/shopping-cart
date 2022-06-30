@@ -21,6 +21,10 @@ export default function ItemFilter({ pcParts, setSelectedItems }) {
     setSelectedItems(mobo)
     setSelectedItemsText("Motherboards")
   }
+  const selectRamItems = () => {
+    setSelectedItems(ram)
+    setSelectedItemsText("RAM")
+  }
 
   return (
     <Container>
@@ -33,7 +37,7 @@ export default function ItemFilter({ pcParts, setSelectedItems }) {
         <li onClick={(e) => selectCpuItems()}>Processors</li>
         <li onClick={(e) => selectGpuItems()}>Video Cards</li>
         <li onClick={(e) => selectMoboItems()}>Motherboards</li>
-        <li>RAM</li>
+        <li onClick={(e) => selectRamItems()}>RAM</li>
       </ul>
     </Container>
   )
