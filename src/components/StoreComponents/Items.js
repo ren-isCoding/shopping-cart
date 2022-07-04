@@ -3,19 +3,23 @@ import styled from "styled-components"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
 export default function Items({ pcParts, selectedItems }) {
+  function renderItem(item) {
+    return (
+      <div className="product-div" key={item.id}>
+        <img src={item.img} />
+        <button className="add-to-cart-btn">
+          +
+          <ShoppingCartSVG />
+        </button>
+        <h4>{item.name}</h4>
+        <span>{item.price}</span>
+      </div>
+    )
+  }
+
   if (selectedItems.length) {
-    const filteredItems = selectedItems.map((item) => {
-      return (
-        <div className="product-div" key={item.id}>
-          <img src={item.img} />
-          <button className="add-to-cart-btn">
-            +
-            <ShoppingCartSVG />
-          </button>
-          <h4>{item.name}</h4>
-          <span>{item.price}</span>
-        </div>
-      )
+    const filteredItems = selectedItems.map((itemObj) => {
+      return renderItem(itemObj)
     })
 
     return <Container>{filteredItems}</Container>
@@ -23,59 +27,16 @@ export default function Items({ pcParts, selectedItems }) {
     const { cpu, gpu, mobo, ram } = pcParts
 
     const cpuItems = cpu.map((cpuObj) => {
-      return (
-        <div className="product-div" key={cpuObj.id}>
-          <img src={cpuObj.img} />
-          <button className="add-to-cart-btn">
-            +
-            <ShoppingCartSVG />
-          </button>
-          <h4>{cpuObj.name}</h4>
-          <span>{cpuObj.price}</span>
-        </div>
-      )
+      return renderItem(cpuObj)
     })
-
     const gpuItems = gpu.map((gpuObj) => {
-      return (
-        <div className="product-div" key={gpuObj.id}>
-          <img src={gpuObj.img} />
-          <button className="add-to-cart-btn">
-            +
-            <ShoppingCartSVG />
-          </button>
-          <h4>{gpuObj.name}</h4>
-          <span>{gpuObj.price}</span>
-        </div>
-      )
+      return renderItem(gpuObj)
     })
-
     const moboItems = mobo.map((moboObj) => {
-      return (
-        <div className="product-div" key={moboObj.id}>
-          <img src={moboObj.img} />
-          <button className="add-to-cart-btn">
-            +
-            <ShoppingCartSVG />
-          </button>
-          <h4>{moboObj.name}</h4>
-          <span>{moboObj.price}</span>
-        </div>
-      )
+      return renderItem(moboObj)
     })
-
     const ramItems = ram.map((ramObj) => {
-      return (
-        <div className="product-div" key={ramObj.id}>
-          <img src={ramObj.img} />
-          <button className="add-to-cart-btn">
-            +
-            <ShoppingCartSVG />
-          </button>
-          <h4>{ramObj.name}</h4>
-          <span>{ramObj.price}</span>
-        </div>
-      )
+      return renderItem(ramObj)
     })
 
     const allItems = [...cpuItems, ...gpuItems, ...moboItems, ...ramItems]
