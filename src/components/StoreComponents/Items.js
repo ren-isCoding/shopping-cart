@@ -2,12 +2,12 @@ import React from "react"
 import styled from "styled-components"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
-export default function Items({ pcParts, selectedItems }) {
+export default function Items({ pcParts, selectedItems, setCart }) {
   function renderItem(item) {
     return (
       <div className="product-div" key={item.id}>
         <img src={item.img} />
-        <button className="add-to-cart-btn">
+        <button className="add-to-cart-btn" onClick={(e) => addToCart(item)}>
           +
           <ShoppingCartSVG />
         </button>
@@ -15,6 +15,10 @@ export default function Items({ pcParts, selectedItems }) {
         <span>{item.price}</span>
       </div>
     )
+  }
+
+  function addToCart(item) {
+    setCart((prevState) => [...prevState, item])
   }
 
   if (selectedItems.length) {

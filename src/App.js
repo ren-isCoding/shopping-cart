@@ -7,6 +7,7 @@ import PcPartsList from "./utils/PcPartsList"
 export default function App() {
   const [pcParts, setPcParts] = useState(PcPartsList)
   const [selectedItems, setSelectedItems] = useState([])
+  const [cart, setCart] = useState([])
   return (
     <BrowserRouter>
       <Routes>
@@ -19,6 +20,8 @@ export default function App() {
               setPcParts={setPcParts}
               selectedItems={selectedItems}
               setSelectedItems={setSelectedItems}
+              cart={cart}
+              setCart={setCart}
             />
           }
         />

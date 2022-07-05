@@ -3,7 +3,14 @@ import styled from "styled-components"
 import Header from "./Header"
 import Main from "./Main"
 
-export default function Store({ pcParts, setPcParts, selectedItems, setSelectedItems }) {
+export default function Store({
+  pcParts,
+  setPcParts,
+  selectedItems,
+  setSelectedItems,
+  cart,
+  setCart,
+}) {
   return (
     <StoreContainer>
       <Header />
@@ -12,6 +19,8 @@ export default function Store({ pcParts, setPcParts, selectedItems, setSelectedI
         setPcParts={setPcParts}
         selectedItems={selectedItems}
         setSelectedItems={setSelectedItems}
+        cart={cart}
+        setCart={setCart}
       />
     </StoreContainer>
   )

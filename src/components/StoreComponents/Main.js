@@ -3,7 +3,13 @@ import styled from "styled-components"
 import ItemFilter from "./ItemFilter"
 import Items from "./Items"
 
-export default function Main({ pcParts, selectedItems, setSelectedItems }) {
+export default function Main({
+  pcParts,
+  selectedItems,
+  setSelectedItems,
+  cart,
+  setCart,
+}) {
   return (
     <MainContainer>
       <ItemFilter
@@ -11,7 +17,7 @@ export default function Main({ pcParts, selectedItems, setSelectedItems }) {
         selectedItems={selectedItems}
         setSelectedItems={setSelectedItems}
       />
-      <Items pcParts={pcParts} selectedItems={selectedItems} />
+      <Items pcParts={pcParts} selectedItems={selectedItems} setCart={setCart} />
     </MainContainer>
   )
 }
