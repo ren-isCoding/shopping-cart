@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Header from "./Header"
 import Main from "./Main"
+import Cart from "./Cart"
 
 export default function Store({
   pcParts,
@@ -22,6 +23,7 @@ export default function Store({
         cart={cart}
         setCart={setCart}
       />
+      <Cart cart={cart} setCart={setCart} />
     </StoreContainer>
   )
 }
