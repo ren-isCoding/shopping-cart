@@ -17,7 +17,12 @@ export default function Main({
         selectedItems={selectedItems}
         setSelectedItems={setSelectedItems}
       />
-      <Items pcParts={pcParts} selectedItems={selectedItems} setCart={setCart} />
+      <Items
+        pcParts={pcParts}
+        selectedItems={selectedItems}
+        cart={cart}
+        setCart={setCart}
+      />
     </MainContainer>
   )
 }
