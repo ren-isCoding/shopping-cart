@@ -4,15 +4,16 @@ import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
 export default function Items({ pcParts, selectedItems, cart, setCart }) {
   function renderItem(item) {
+    const { id, img, name, price } = item
     return (
-      <div className="product-div" key={item.id}>
-        <img src={item.img} />
+      <div className="product-div" key={id}>
+        <img src={img} />
         <button className="add-to-cart-btn" onClick={(e) => addToCart(item)}>
           +
           <ShoppingCartSVG />
         </button>
-        <h4>{item.name}</h4>
-        <span>{item.price}</span>
+        <h4>{name}</h4>
+        <span>{price}</span>
       </div>
     )
   }
