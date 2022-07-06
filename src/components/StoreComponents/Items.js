@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
-export default function Items({ pcParts, selectedItems, setCart }) {
+export default function Items({ pcParts, selectedItems, cart, setCart }) {
   function renderItem(item) {
     return (
       <div className="product-div" key={item.id}>
@@ -17,8 +17,19 @@ export default function Items({ pcParts, selectedItems, setCart }) {
     )
   }
 
-  function addToCart(item) {
-    setCart((prevState) => [...prevState, item])
+  function addToCart(newItem) {
+    if (cart.some((item) => item.id === newItem.id)) {
+      let newCart = cart
+      let selectedIndex = newCart.findIndex((obj) => obj.id === newItem.id)
+
+      if (selectedIndex >= 0) {
+        newCart[selectedIndex].quantity = (newCart[selectedIndex].quantity | 0) + 1
+      }
+      setCart([...newCart])
+    } else {
+      newItem.quantity = 1
+      setCart((prevState) => [...prevState, newItem])
+    }
   }
 
   if (selectedItems.length) {
