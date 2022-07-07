@@ -3,7 +3,11 @@ import styled from "styled-components"
 import SearchSVG from "../../assets/svg/Search"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
-export default function Header() {
+export default function Header({ setIsShoppingCartActive }) {
+  function openShoppingCart() {
+    setIsShoppingCartActive(true)
+  }
+
   return (
     <HeaderContainer>
       <h3>
@@ -15,7 +19,7 @@ export default function Header() {
           <SearchSVG />
         </div>
       </div>
-      <div className="container">
+      <div className="container" onClick={(e) => openShoppingCart()}>
         <ShoppingCartSVG />
         <span>Shopping Cart</span>
       </div>

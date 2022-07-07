@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import Header from "./Header"
 import Main from "./Main"
@@ -12,9 +12,11 @@ export default function Store({
   cart,
   setCart,
 }) {
+  const [isShoppingCartActive, setIsShoppingCartActive] = useState(false)
+
   return (
     <StoreContainer>
-      <Header />
+      <Header setIsShoppingCartActive={setIsShoppingCartActive} />
       <Main
         pcParts={pcParts}
         setPcParts={setPcParts}
@@ -23,7 +25,12 @@ export default function Store({
         cart={cart}
         setCart={setCart}
       />
-      <Cart cart={cart} setCart={setCart} />
+      <Cart
+        cart={cart}
+        setCart={setCart}
+        isShoppingCartActive={isShoppingCartActive}
+        setIsShoppingCartActive={setIsShoppingCartActive}
+      />
     </StoreContainer>
   )
 }
