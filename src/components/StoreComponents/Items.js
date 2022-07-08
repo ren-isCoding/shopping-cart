@@ -7,7 +7,9 @@ export default function Items({ pcParts, selectedItems, cart, setCart }) {
     const { id, img, name, price } = item
     return (
       <div className="product-div" key={id}>
-        <img src={img} />
+        <div className="item-img">
+          <img src={img} />
+        </div>
         <button className="add-to-cart-btn" onClick={(e) => addToCart(item)}>
           +
           <ShoppingCartSVG />
@@ -84,12 +86,18 @@ const Container = styled.div`
     height: 30rem;
     cursor: pointer;
 
+    .item-img {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 1rem;
+    }
+
     img {
       background: #e8e8e8;
       width: 100%;
       height: 100%;
       object-fit: contain;
-      margin-bottom: 1rem;
       transition: 120ms ease-in;
     }
 
@@ -106,13 +114,7 @@ const Container = styled.div`
 
   .product-div:hover {
     img {
-      transform: scale(1.07);
-    }
-    h4 {
-      transform: translate(0, 1rem);
-    }
-    span {
-      transform: translate(0, 1rem);
+      transform: scale(1.05);
     }
     .add-to-cart-btn {
       opacity: 1;
