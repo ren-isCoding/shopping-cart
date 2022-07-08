@@ -3,10 +3,16 @@ import styled from "styled-components"
 import SearchSVG from "../../assets/svg/Search"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
-export default function Header({ setIsShoppingCartActive }) {
+export default function Header({ cart, setIsShoppingCartActive }) {
   function openShoppingCart() {
     setIsShoppingCartActive(true)
   }
+
+  const itemsInCart = cart
+    .map((itemObj) => {
+      return itemObj.quantity
+    })
+    .reduce((a, b) => a + b, 0)
 
   return (
     <HeaderContainer>
@@ -21,6 +27,7 @@ export default function Header({ setIsShoppingCartActive }) {
       </div>
       <div className="container" onClick={(e) => openShoppingCart()}>
         <ShoppingCartSVG />
+        <p>({itemsInCart})</p>
         <span>Shopping Cart</span>
       </div>
     </HeaderContainer>

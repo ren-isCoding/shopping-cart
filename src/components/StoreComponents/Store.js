@@ -16,7 +16,7 @@ export default function Store({
 
   return (
     <StoreContainer>
-      <Header setIsShoppingCartActive={setIsShoppingCartActive} />
+      <Header cart={cart} setIsShoppingCartActive={setIsShoppingCartActive} />
       <Main
         pcParts={pcParts}
         setPcParts={setPcParts}
