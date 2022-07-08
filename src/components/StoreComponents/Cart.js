@@ -23,8 +23,9 @@ export default function Cart({
 
   return (
     <CartContainer
-      opacity={isShoppingCartActive ? "1" : "0"}
+      opacity={isShoppingCartActive ? ".8" : "0"}
       pointerEvents={isShoppingCartActive ? "all" : "none"}
+      translate={isShoppingCartActive ? 0 : "100%"}
     >
       <div className="overlay" onClick={(e) => closeCart()}></div>
       <div className="cart"></div>
@@ -35,22 +36,28 @@ export default function Cart({
 const CartContainer = styled.div`
   position: fixed;
   display: flex;
-  opacity: ${(props) => props.opacity};
   pointer-events: ${(props) => props.pointerEvents};
   right: 0;
   left: 0;
   top: 0;
   bottom: 0;
   z-index: 100;
+  justify-content: flex-end;
 
   .overlay {
+    opacity: ${(props) => props.opacity};
+    position: absolute;
+    height: 100%;
+    width: 100%;
     background: black;
-    opacity: 0.8;
-    flex-grow: 2;
+    transition: 700ms;
   }
 
   .cart {
-    flex-grow: 1;
+    transition: 500ms;
+    transform: translateX(${(props) => props.translate}) !important;
     background: whitesmoke;
+    flex-grow: 0.3;
+    opacity: 1;
   }
 `
