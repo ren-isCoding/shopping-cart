@@ -12,7 +12,7 @@ export default function EmptyCart({ setIsShoppingCartActive }) {
       <p>
         Your Shopping Cart <br /> is empty.
       </p>
-      <ShoppingCartSVG size={140} color="#DADADE" />
+      <ShoppingCartSVG size={240} color="#DADADE" />
       <button onClick={(e) => closeCart()}>BROWSE PRODUCTS</button>
     </Container>
   )
