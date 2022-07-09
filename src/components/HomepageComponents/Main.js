@@ -13,9 +13,9 @@ export default function Main() {
         </a>
       </div>
       <div className="sub-div">
-        <span className="sub-text">Latest and greatest tech.</span>
-        <span className="sub-text">Worldwide fast shipping.</span>
-        <span className="sub-text">Competitive pricing.</span>
+        <span className="sub-text">LATEST AND GREATEST TECH.</span>
+        <span className="sub-text">WORLDWIDE FAST SHIPPING.</span>
+        <span className="sub-text">COMPETITIVE PRICING.</span>
       </div>
     </MainContainer>
   )
@@ -74,11 +74,13 @@ const MainContainer = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-weight: 600;
   }
   .sub-text {
-    font-size: 2.2rem;
+    font-size: 2rem;
     margin: 0.2rem 0;
     background: black;
     padding: 0 1rem;
+    letter-spacing: 0.2rem;
   }
 `
