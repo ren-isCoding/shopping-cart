@@ -124,7 +124,8 @@ const Container = styled.div`
   .add-to-cart-btn {
     opacity: 0;
     position: absolute;
-    right: 0;
+    right: 1rem;
+    top: 1rem;
     display: flex;
     font-size: 3rem;
     align-items: center;

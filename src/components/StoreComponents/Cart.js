@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import EmptyCart from "./EmptyCart"
 
 export default function Cart({
   cart,
@@ -28,7 +29,13 @@ export default function Cart({
       translate={isShoppingCartActive ? 0 : "100%"}
     >
       <div className="overlay" onClick={(e) => closeCart()}></div>
-      <div className="cart"></div>
+      <div className="cart">
+        {cartItems.length ? (
+          cartItems
+        ) : (
+          <EmptyCart setIsShoppingCartActive={setIsShoppingCartActive} />
+        )}
+      </div>
     </CartContainer>
   )
 }
@@ -57,7 +64,11 @@ const CartContainer = styled.div`
     transition: 500ms;
     transform: translateX(${(props) => props.translate}) !important;
     background: whitesmoke;
-    flex-grow: 0.3;
     opacity: 1;
+    width: 30%;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `
