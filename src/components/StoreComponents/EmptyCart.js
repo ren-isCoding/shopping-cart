@@ -28,6 +28,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  justify-self: center;
+  align-self: center;
 
   button {
     padding: 3rem 4rem;
