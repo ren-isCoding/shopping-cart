@@ -11,9 +11,17 @@ export default function Cart({
   const cartItems = cart.map((cartObj) => {
     const { id, name, price, img, quantity } = cartObj
     return (
-      <div key={id}>
-        {name} <img src={img} alt="" />
-        {quantity}
+      <div className="cart-item" key={id}>
+        <img src={img} />
+        <div className="desc">
+          <span className="name">{name}</span>
+          <div className="quantity-div">
+            <button className="decrement">-</button>
+            <span className="quantity">{quantity}</span>
+            <button className="increment">+</button>
+          </div>
+          <span className="price">{price}</span>
+        </div>
       </div>
     )
   })
@@ -70,5 +78,68 @@ const CartContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .cart-item {
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+    border-top: solid 0.1rem lightgray;
+    border-bottom: solid 0.1rem lightgray;
+  }
+
+  .cart-item img {
+    width: 17rem;
+    min-width: 17rem;
+    height: 15rem;
+    padding: 1rem;
+    background: #e9e9ed;
+    object-fit: contain;
+  }
+
+  .desc {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .name {
+    font-size: 1.8rem;
+  }
+  .price {
+    align-self: flex-end;
+    font-weight: 600;
+    font-size: 1.6rem;
+  }
+
+  .quantity-div {
+    width: min-content;
+    display: flex;
+    align-items: center;
+    padding: 0;
+
+    button {
+      padding: 0rem 1.5rem;
+      border: none;
+      font-size: 3rem;
+    }
+
+    .quantity {
+      width: 4.4rem;
+      height: 4.3rem;
+      border: solid 0.1rem #e9e9ed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 `
