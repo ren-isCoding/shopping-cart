@@ -15,7 +15,7 @@ export default function Items({ pcParts, selectedItems, cart, setCart }) {
           <ShoppingCartSVG />
         </button>
         <h4>{name}</h4>
-        <span>{price}</span>
+        <span>{price} €</span>
       </div>
     )
   }
