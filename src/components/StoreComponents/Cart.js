@@ -8,8 +8,13 @@ export default function Cart({
   isShoppingCartActive,
   setIsShoppingCartActive,
 }) {
-  const cartItems = cart.map((cartObj) => {
-    const { id, name, price, img, quantity } = cartObj
+  function closeCart() {
+    setIsShoppingCartActive(false)
+  }
+
+  const cartItems = cart.map((item) => {
+    const { id, name, price, img, quantity } = item
+    const truePrice = (price * quantity).toFixed(2)
     return (
       <div className="cart-item" key={id}>
         <img src={img} />
@@ -20,14 +25,26 @@ export default function Cart({
             <span className="quantity">{quantity}</span>
             <button className="increment">+</button>
           </div>
-          <span className="price">{price}</span>
+          <span className="price">{truePrice} €</span>
         </div>
       </div>
     )
   })
 
-  function closeCart() {
-    setIsShoppingCartActive(false)
+  const totalPrice = cart.reduce((accumulator, item) => {
+    const total = accumulator + item.price * item.quantity
+    return total
+  }, 0)
+
+  const Footer = () => {
+    return (
+      <div className="footer">
+        <button className="checkout-btn">
+          CHECK OUT <span className="checkout-arrow">▶</span>
+        </button>
+        <span className="total-price">Total: {totalPrice.toFixed(2)} €</span>
+      </div>
+    )
   }
 
   return (
@@ -43,6 +60,7 @@ export default function Cart({
         ) : (
           <EmptyCart setIsShoppingCartActive={setIsShoppingCartActive} />
         )}
+        {cartItems.length ? <Footer /> : null}
       </div>
     </CartContainer>
   )
@@ -69,6 +87,7 @@ const CartContainer = styled.div`
   }
 
   .cart {
+    position: relative;
     transition: 500ms;
     transform: translateX(${(props) => props.translate}) !important;
     background: whitesmoke;
@@ -141,5 +160,49 @@ const CartContainer = styled.div`
       justify-content: center;
       align-items: center;
     }
+  }
+
+  .footer {
+    bottom: 0rem;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #231f20;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+  }
+
+  .checkout-btn {
+    background: none;
+    font-weight: 600;
+    transform: scaleY(0.9);
+    transition: all 0.15s ease-in-out;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -10%;
+      left: -8%;
+      width: 0;
+      height: 120%;
+      z-index: -1;
+      background: #e9e9ed;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover {
+      color: #231f20;
+      &::before {
+        width: 115%;
+      }
+    }
+  }
+
+  .checkout-arrow {
+    font-size: 2rem;
+    color: #231f20;
   }
 `
