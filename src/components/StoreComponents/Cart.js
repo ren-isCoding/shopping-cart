@@ -13,7 +13,7 @@ export default function Cart({
   }
 
   function updateItemQuantity(id, operation) {
-    let newCart = cart
+    const newCart = cart
     newCart.map((item) => {
       if (item.id === id) {
         if (operation === "increment") {
@@ -27,6 +27,14 @@ export default function Cart({
     })
 
     setCart([...filteredCart])
+  }
+
+  function removeItem(id) {
+    const newCart = cart.filter((item) => {
+      return item.id != id
+    })
+
+    setCart([...newCart])
   }
 
   const cartItems = cart.map((item) => {
@@ -52,6 +60,9 @@ export default function Cart({
               +
             </button>
           </div>
+          <button className="remove-item" onClick={(e) => removeItem(id)}>
+            REMOVE
+          </button>
           <span className="price">{truePrice} €</span>
         </div>
       </div>
