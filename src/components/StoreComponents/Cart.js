@@ -13,7 +13,7 @@ export default function Cart({
   }
 
   function updateItemQuantity(id, operation) {
-    const newCart = cart
+    let newCart = cart
     newCart.map((item) => {
       if (item.id === id) {
         if (operation === "increment") {
@@ -22,11 +22,11 @@ export default function Cart({
       }
     })
 
-    const filteredCart = newCart.filter((item) => {
+    newCart = newCart.filter((item) => {
       return item.quantity != 0
     })
 
-    setCart([...filteredCart])
+    setCart([...newCart])
   }
 
   function removeItem(id) {
@@ -69,10 +69,12 @@ export default function Cart({
     )
   })
 
-  const totalPrice = cart.reduce((accumulator, item) => {
-    const total = accumulator + item.price * item.quantity
-    return total
-  }, 0)
+  const totalPrice = cart
+    .reduce((accumulator, item) => {
+      const total = accumulator + item.price * item.quantity
+      return total
+    }, 0)
+    .toFixed(2)
 
   const Footer = () => {
     return (
@@ -80,7 +82,7 @@ export default function Cart({
         <button className="checkout-btn">
           CHECK OUT <span className="checkout-arrow">▶</span>
         </button>
-        <span className="total-price">Total: {totalPrice.toFixed(2)} €</span>
+        <span className="total-price">Total: {totalPrice} €</span>
       </div>
     )
   }
