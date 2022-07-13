@@ -12,6 +12,23 @@ export default function Cart({
     setIsShoppingCartActive(false)
   }
 
+  function updateItemQuantity(id, operation) {
+    let newCart = cart
+    newCart.map((item) => {
+      if (item.id === id) {
+        if (operation === "increment") {
+          item.quantity++
+        } else item.quantity--
+      }
+    })
+
+    const filteredCart = newCart.filter((item) => {
+      return item.quantity != 0
+    })
+
+    setCart([...filteredCart])
+  }
+
   const cartItems = cart.map((item) => {
     const { id, name, price, img, quantity } = item
     const truePrice = (price * quantity).toFixed(2)
@@ -21,9 +38,19 @@ export default function Cart({
         <div className="desc">
           <span className="name">{name}</span>
           <div className="quantity-div">
-            <button className="decrement">-</button>
+            <button
+              className="decrement"
+              onClick={(e) => updateItemQuantity(id, "decrement")}
+            >
+              -
+            </button>
             <span className="quantity">{quantity}</span>
-            <button className="increment">+</button>
+            <button
+              className="increment"
+              onClick={(e) => updateItemQuantity(id, "increment")}
+            >
+              +
+            </button>
           </div>
           <span className="price">{truePrice} €</span>
         </div>
