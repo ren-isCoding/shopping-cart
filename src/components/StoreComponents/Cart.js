@@ -29,7 +29,7 @@ export default function Cart({
     setCart([...newCart])
   }
 
-  function removeItem(id) {
+  function deleteItem(id) {
     const newCart = cart.filter((item) => {
       return item.id != id
     })
@@ -60,8 +60,8 @@ export default function Cart({
               +
             </button>
           </div>
-          <button className="remove-item" onClick={(e) => removeItem(id)}>
-            REMOVE
+          <button className="delete-btn" onClick={(e) => deleteItem(id)}>
+            DELETE
           </button>
           <span className="price">{truePrice} €</span>
         </div>
@@ -127,7 +127,6 @@ const CartContainer = styled.div`
   }
 
   .cart {
-    position: relative;
     transition: 500ms;
     transform: translateX(${(props) => props.translate}) !important;
     background: whitesmoke;
@@ -146,11 +145,13 @@ const CartContainer = styled.div`
   }
 
   .cart-item {
+    position: relative;
     width: 100%;
     display: flex;
     gap: 2rem;
     border-top: solid 0.1rem lightgray;
     border-bottom: solid 0.1rem lightgray;
+    padding: 0.7rem 0;
   }
 
   .cart-item img {
@@ -165,17 +166,30 @@ const CartContainer = styled.div`
   .desc {
     display: flex;
     flex-direction: column;
+    padding: 1rem;
     width: 100%;
     height: 100%;
     gap: 1rem;
-    justify-content: center;
   }
 
   .name {
     font-size: 1.8rem;
   }
+
+  .delete-btn {
+    position: absolute;
+    bottom: 2rem;
+    font-size: 1.5rem;
+    padding: 0.3rem 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    transform: scaleY(0.9);
+  }
+
   .price {
-    align-self: flex-end;
+    position: absolute;
+    bottom: 2rem;
+    right: 0;
     font-weight: 600;
     font-size: 1.6rem;
   }
