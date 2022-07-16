@@ -8,10 +8,22 @@ export default function App() {
   const [pcParts, setPcParts] = useState(PcPartsList)
   const [selectedItems, setSelectedItems] = useState([])
   const [cart, setCart] = useState([])
+  const [isShoppingCartActive, setIsShoppingCartActive] = useState(false)
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route
+          path="/"
+          element={
+            <Homepage
+              cart={cart}
+              setCart={setCart}
+              isShoppingCartActive={isShoppingCartActive}
+              setIsShoppingCartActive={setIsShoppingCartActive}
+            />
+          }
+        />
         <Route
           path="/store"
           element={
@@ -22,6 +34,8 @@ export default function App() {
               setSelectedItems={setSelectedItems}
               cart={cart}
               setCart={setCart}
+              isShoppingCartActive={isShoppingCartActive}
+              setIsShoppingCartActive={setIsShoppingCartActive}
             />
           }
         />

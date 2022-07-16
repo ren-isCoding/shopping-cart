@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import Header from "./Header"
 import Main from "./Main"
@@ -11,9 +11,9 @@ export default function Store({
   setSelectedItems,
   cart,
   setCart,
+  isShoppingCartActive,
+  setIsShoppingCartActive,
 }) {
-  const [isShoppingCartActive, setIsShoppingCartActive] = useState(false)
-
   return (
     <StoreContainer>
       <Header cart={cart} setIsShoppingCartActive={setIsShoppingCartActive} />

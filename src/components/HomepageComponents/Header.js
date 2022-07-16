@@ -3,7 +3,10 @@ import styled from "styled-components"
 import SearchSVG from "../../assets/svg/Search"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
-export default function Header() {
+export default function Header({ setIsShoppingCartActive }) {
+  function openShoppingCart() {
+    setIsShoppingCartActive(true)
+  }
   return (
     <HeaderContainer>
       <h3>FAKE COMPONENTS</h3>
@@ -12,7 +15,7 @@ export default function Header() {
           <SearchSVG />
           <span>Search</span>
         </div>
-        <div className="container">
+        <div className="container" onClick={(e) => openShoppingCart()}>
           <ShoppingCartSVG />
           <span>Shopping Cart</span>
         </div>
@@ -51,6 +54,7 @@ const HeaderContainer = styled.header`
   }
 
   .container {
+    color: whitesmoke;
     display: flex;
     align-items: center;
     gap: 1rem;

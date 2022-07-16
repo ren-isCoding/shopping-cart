@@ -1,8 +1,11 @@
-import React from "react"
+import React, { useCallback } from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
 export default function EmptyCart({ setIsShoppingCartActive }) {
+  const navigate = useNavigate()
+  const goToStore = useCallback(() => navigate("/store", { replace: true }), [navigate])
   function closeCart() {
     setIsShoppingCartActive(false)
   }
@@ -13,7 +16,14 @@ export default function EmptyCart({ setIsShoppingCartActive }) {
         Your Shopping Cart <br /> is empty.
       </p>
       <ShoppingCartSVG size={240} color="#DADADE" />
-      <button onClick={(e) => closeCart()}>BROWSE PRODUCTS</button>
+      <button
+        onClick={(e) => {
+          closeCart()
+          setTimeout(goToStore, 400)
+        }}
+      >
+        BROWSE PRODUCTS
+      </button>
     </Container>
   )
 }
