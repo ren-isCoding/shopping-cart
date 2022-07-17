@@ -95,6 +95,9 @@ export default function Cart({
     >
       <div className="overlay" onClick={(e) => closeCart()}></div>
       <div className="cart">
+        <button className="close-cart-btn" onClick={(e) => closeCart()}>
+          CLOSE
+        </button>
         {cartItems.length ? (
           cartItems
         ) : (
@@ -132,7 +135,7 @@ const CartContainer = styled.div`
     background: whitesmoke;
     opacity: 1;
     width: 60rem;
-    padding: 2rem;
+    padding: 0 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -148,6 +151,23 @@ const CartContainer = styled.div`
     }
   }
 
+  .close-cart-btn {
+    position: sticky;
+    top: 1rem;
+    align-self: flex-end;
+    z-index: 1;
+    padding: 0 1rem;
+    transform: scaleY(0.9);
+    color: whitesmoke;
+    background: #231f20;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    transition: 150ms;
+
+    &:hover {
+      color: lightgray;
+    }
+  }
   .cart-item {
     position: relative;
     width: 100%;
