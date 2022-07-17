@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Header from "./Header"
 import Main from "./Main"
-import Cart from "./Cart"
+import Cart from "../CartComponents/Cart"
 
 export default function Store({
   pcParts,

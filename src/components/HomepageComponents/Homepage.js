@@ -3,7 +3,7 @@ import bg from "../../assets/img/bg.jpg"
 import styled from "styled-components"
 import Header from "./Header"
 import Main from "./Main"
-import Cart from "../StoreComponents/Cart"
+import Cart from "../CartComponents/Cart"
 
 export default function Homepage({
   cart,
