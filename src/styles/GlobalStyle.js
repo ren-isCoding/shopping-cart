@@ -12,6 +12,10 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-size: 62.5%; //1rem = 10px
     line-height: 1.6;
+
+    @media (max-width: 600px ) {
+      font-size: 52%;
+    }
   }
   body {
     font-size: 2rem;
@@ -20,6 +24,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Anek Malayalam', sans-serif;
     overflow-x: hidden;
     height: 100vh;
+
+
   }
   #root {
     display: flex;

@@ -131,7 +131,7 @@ const CartContainer = styled.div`
     transform: translateX(${(props) => props.translate}) !important;
     background: whitesmoke;
     opacity: 1;
-    width: 30%;
+    width: 60rem;
     padding: 2rem;
     display: flex;
     justify-content: center;
@@ -142,6 +142,10 @@ const CartContainer = styled.div`
     gap: 2rem;
     justify-content: flex-start;
     align-items: flex-start;
+
+    @media (max-width: 700px) {
+      width: 100%;
+    }
   }
 
   .cart-item {
@@ -177,7 +181,7 @@ const CartContainer = styled.div`
   }
 
   .delete-btn {
-    position: absolute;
+    width: 10rem;
     bottom: 2rem;
     font-size: 1.5rem;
     padding: 0.3rem 1rem;
