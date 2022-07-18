@@ -42,10 +42,10 @@ const StoreContainer = styled.div`
   flex-direction: column;
   flex-grow: 1;
   gap: 12rem;
+  padding: 0 13rem;
   padding-top: 10rem;
-  padding-left: 7rem;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1200px) {
     padding: 10%;
   }
 `

@@ -65,17 +65,17 @@ export default function Items({ pcParts, selectedItems, cart, setCart }) {
 
 const Container = styled.div`
   display: grid;
-  justify-items: center;
-  justify-content: center;
-  place-self: center;
   grid-template-columns: repeat(4, 1fr);
-  @media (max-width: 1660px) {
+  gap: 4rem 3rem;
+  @media (max-width: 1750px) {
     grid-template-columns: repeat(3, 1fr);
   }
-  @media (max-width: 1370px) {
+  @media (max-width: 1400px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  gap: 4rem 3rem;
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 
   .product-div {
     position: relative;

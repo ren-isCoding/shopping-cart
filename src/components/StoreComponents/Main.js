@@ -29,4 +29,7 @@ export default function Main({
 
 const MainContainer = styled.div`
   display: flex;
+  @media (max-width: 1050px) {
+    justify-content: center;
+  }
 `

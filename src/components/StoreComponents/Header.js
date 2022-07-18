@@ -25,7 +25,7 @@ export default function Header({ cart, setIsShoppingCartActive }) {
           <SearchSVG />
         </div>
       </div>
-      <div className="container" onClick={(e) => openShoppingCart()}>
+      <div className="shopping-cart" onClick={(e) => openShoppingCart()}>
         <ShoppingCartSVG />
         <p>({itemsInCart})</p>
         <span>Shopping Cart</span>
@@ -37,19 +37,22 @@ export default function Header({ cart, setIsShoppingCartActive }) {
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
+  gap: 3rem;
   align-items: flex-start;
   width: 100%;
   max-height: 10rem;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1050px) {
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 2rem;
   }
 
   h3 {
     letter-spacing: 0.7rem;
     font-weight: lighter;
+    white-space: nowrap;
     a {
       color: inherit;
     }
@@ -76,35 +79,32 @@ const HeaderContainer = styled.header`
     }
   }
 
-  .container {
+  .shopping-cart {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 1rem;
     padding: 1rem 2rem;
     padding-top: 0rem;
     cursor: pointer;
+    margin-right: 10rem;
 
-    @media (max-width: 800px) {
-      padding: 0;
+    @media (max-width: 1050px) {
+      margin: 0;
     }
   }
 
-  .container span {
-    position: relative;
+  .shopping-cart span {
+    position: absolute;
     font-size: 1.8rem;
-    left: -1rem;
+    left: 7.5rem;
     opacity: 0;
     white-space: nowrap;
-    transition: 150ms;
-
-    @media (max-width: 800px) {
-      opacity: 0.9;
-      left: 0;
-    }
+    transition: 150ms ease-in-out;
   }
 
-  .container:hover span {
-    left: 0;
+  .shopping-cart:hover span {
+    left: 90%;
     opacity: 0.9;
   }
 `
