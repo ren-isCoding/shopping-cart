@@ -28,6 +28,10 @@ const MainContainer = styled.main`
   color: whitesmoke;
   width: 50rem;
 
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+
   img {
     width: 50rem;
     margin-bottom: 1rem;
@@ -36,6 +40,7 @@ const MainContainer = styled.main`
   .main-text {
     font-size: 5rem;
     font-weight: bold;
+    white-space: nowrap;
   }
 
   .gif-container {

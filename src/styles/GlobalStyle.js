@@ -14,7 +14,11 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.6;
 
     @media (max-width: 600px ) {
-      font-size: 52%;
+      font-size: 50%;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 40%;
     }
   }
   body {

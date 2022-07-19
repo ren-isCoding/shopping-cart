@@ -33,8 +33,10 @@ const HeaderContainer = styled.header`
   max-height: 10rem;
 
   @media (max-width: 800px) {
+    width: 100%;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 2rem;
   }
 

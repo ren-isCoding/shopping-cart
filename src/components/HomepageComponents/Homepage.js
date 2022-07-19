@@ -43,5 +43,6 @@ const HomepageContainer = styled.div`
 
   @media (max-width: 800px) {
     padding: 10%;
+    align-items: center;
   }
 `
