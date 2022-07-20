@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import EmptyCart from "./EmptyCart"
 
@@ -8,8 +8,15 @@ export default function Cart({
   isShoppingCartActive,
   setIsShoppingCartActive,
 }) {
+  const [isVideoActive, setIsVideoActive] = useState(false)
+
   function closeCart() {
     setIsShoppingCartActive(false)
+    setIsVideoActive(false)
+  }
+
+  function showVideo() {
+    setIsVideoActive(true)
   }
 
   function updateItemQuantity(id, operation) {
@@ -79,11 +86,23 @@ export default function Cart({
   const Footer = () => {
     return (
       <div className="footer">
-        <button className="checkout-btn">
-          CHECK OUT <span className="checkout-arrow">▶</span>
+        <button className="checkout-btn" onClick={(e) => showVideo()}>
+          CHECK OUT <span className="checkout-arrow">▶▶</span>
         </button>
         <span className="total-price">Total: {totalPrice} €</span>
       </div>
+    )
+  }
+
+  const Video = () => {
+    return (
+      <iframe
+        className="video"
+        width="700"
+        height="400"
+        src="https://www.youtube.com/embed/8CBjKLGwLqE?autoplay=1"
+        frameBorder="0"
+      ></iframe>
     )
   }
 
@@ -105,6 +124,7 @@ export default function Cart({
         )}
         {cartItems.length ? <Footer /> : null}
       </div>
+      {isVideoActive ? <Video /> : null}
     </CartContainer>
   )
 }
@@ -120,6 +140,12 @@ const CartContainer = styled.div`
   z-index: 100;
   justify-content: flex-end;
 
+  .video {
+    position: absolute;
+    align-self: center;
+    left: 30%;
+    z-index: 1;
+  }
   .overlay {
     opacity: ${(props) => props.opacity};
     position: absolute;
@@ -241,7 +267,6 @@ const CartContainer = styled.div`
   }
 
   .footer {
-    bottom: 0rem;
     left: 0;
     right: 0;
     width: 100%;
@@ -250,24 +275,28 @@ const CartContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
+    padding-right: 1rem;
   }
 
   .checkout-btn {
+    padding: 0.3rem 1rem;
+    padding-right: 0;
     background: none;
     font-weight: 600;
-    transform: scaleY(0.9);
+    transform: scaleY(1);
     transition: all 0.15s ease-in-out;
 
     &::before {
       content: "";
       position: absolute;
-      top: -10%;
-      left: -8%;
+      top: 0;
+      bottom: 0;
+      left: 0;
       width: 0;
-      height: 120%;
       z-index: -1;
       background: #e9e9ed;
+      border-top-right-radius: 15rem;
+      border-bottom-right-radius: 15rem;
       transition: all 0.3s ease-in-out;
     }
 
