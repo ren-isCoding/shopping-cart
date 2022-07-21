@@ -11,10 +11,6 @@ export default function Header({ setIsShoppingCartActive }) {
     <HeaderContainer>
       <h3>FAKE COMPONENTS</h3>
       <div className="header-div">
-        <div className="container">
-          <SearchSVG />
-          <span>Search</span>
-        </div>
         <div className="container" onClick={(e) => openShoppingCart()}>
           <ShoppingCartSVG />
           <span>Shopping Cart</span>
@@ -27,8 +23,8 @@ export default function Header({ setIsShoppingCartActive }) {
 const HeaderContainer = styled.header`
   color: whitesmoke;
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
+  gap: 15rem;
   width: 80rem;
   max-height: 10rem;
 
@@ -37,7 +33,7 @@ const HeaderContainer = styled.header`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem;
   }
 
   h3 {
