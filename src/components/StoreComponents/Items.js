@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
-export default function Items({ pcParts, selectedItems, cart, setCart }) {
+export default function Items({ pcParts, selectedItems, cart, setCart, searchValue }) {
   function renderItem(item) {
     const { id, img, name, price } = item
     return (
@@ -35,12 +35,11 @@ export default function Items({ pcParts, selectedItems, cart, setCart }) {
     }
   }
 
+  let items
   if (selectedItems.length) {
-    const filteredItems = selectedItems.map((itemObj) => {
+    items = selectedItems.map((itemObj) => {
       return renderItem(itemObj)
     })
-
-    return <Container>{filteredItems}</Container>
   } else {
     const { cpu, gpu, mobo, ram } = pcParts
 
@@ -57,10 +56,19 @@ export default function Items({ pcParts, selectedItems, cart, setCart }) {
       return renderItem(ramObj)
     })
 
-    const allItems = [...cpuItems, ...gpuItems, ...moboItems, ...ramItems]
-
-    return <Container>{allItems}</Container>
+    items = [...cpuItems, ...gpuItems, ...moboItems, ...ramItems]
   }
+  if (searchValue) {
+    items = items.filter((item) => {
+      const formattedItemName = item.props.children[2].props.children
+        .toLowerCase()
+        .replace(/\s/g, "")
+      if (formattedItemName.includes(searchValue)) {
+        return item
+      }
+    })
+  }
+  return <Container>{items}</Container>
 }
 
 const Container = styled.div`

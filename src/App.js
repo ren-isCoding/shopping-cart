@@ -14,6 +14,8 @@ export default function App() {
 
   const [isShoppingCartActive, setIsShoppingCartActive] = useState(false)
 
+  const [searchValue, setSearchValue] = useState()
+
   useEffect(() => {
     localStorage.setItem("my-cart", JSON.stringify(cart))
   }, [cart])
@@ -44,6 +46,8 @@ export default function App() {
               setCart={setCart}
               isShoppingCartActive={isShoppingCartActive}
               setIsShoppingCartActive={setIsShoppingCartActive}
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
             />
           }
         />

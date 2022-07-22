@@ -9,6 +9,7 @@ export default function Main({
   setSelectedItems,
   cart,
   setCart,
+  searchValue,
 }) {
   return (
     <MainContainer>
@@ -22,6 +23,7 @@ export default function Main({
         selectedItems={selectedItems}
         cart={cart}
         setCart={setCart}
+        searchValue={searchValue}
       />
     </MainContainer>
   )

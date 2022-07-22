@@ -6,24 +6,29 @@ import Cart from "../CartComponents/Cart"
 
 export default function Store({
   pcParts,
-  setPcParts,
   selectedItems,
   setSelectedItems,
   cart,
   setCart,
   isShoppingCartActive,
   setIsShoppingCartActive,
+  searchValue,
+  setSearchValue,
 }) {
   return (
     <StoreContainer>
-      <Header cart={cart} setIsShoppingCartActive={setIsShoppingCartActive} />
+      <Header
+        cart={cart}
+        setIsShoppingCartActive={setIsShoppingCartActive}
+        setSearchValue={setSearchValue}
+      />
       <Main
         pcParts={pcParts}
-        setPcParts={setPcParts}
         selectedItems={selectedItems}
         setSelectedItems={setSelectedItems}
         cart={cart}
         setCart={setCart}
+        searchValue={searchValue}
       />
       <Cart
         cart={cart}

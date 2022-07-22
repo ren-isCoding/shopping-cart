@@ -3,9 +3,16 @@ import styled from "styled-components"
 import SearchSVG from "../../assets/svg/Search"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
-export default function Header({ cart, setIsShoppingCartActive }) {
+export default function Header({ cart, setIsShoppingCartActive, setSearchValue }) {
   function openShoppingCart() {
     setIsShoppingCartActive(true)
+  }
+
+  function formatSearchValue(e) {
+    let value = e.target.value
+    value = value.replace(/\s/g, "")
+    value = value.toLowerCase()
+    return value
   }
 
   const itemsInCart = cart
@@ -20,7 +27,11 @@ export default function Header({ cart, setIsShoppingCartActive }) {
         <a href="/"> FAKE COMPONENTS</a>
       </h3>
       <div className="search-bar">
-        <input type="text" placeholder="Search" />
+        <input
+          type="text"
+          placeholder="Search"
+          onChange={(e) => setSearchValue(formatSearchValue(e))}
+        />
         <div className="search-icon">
           <SearchSVG />
         </div>
