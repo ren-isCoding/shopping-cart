@@ -3,15 +3,14 @@ import styled from "styled-components"
 import SearchSVG from "../../assets/svg/Search"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
-export default function Header({ cart, setIsShoppingCartActive, setSearchValue }) {
+export default function Header({ cart, setIsShoppingCartActive, setSearchValues }) {
   function openShoppingCart() {
     setIsShoppingCartActive(true)
   }
 
   function formatSearchValue(e) {
     let value = e.target.value
-    value = value.replace(/\s/g, "")
-    value = value.toLowerCase()
+    value = value.replace(/\s/g, "").toLowerCase().split("")
     return value
   }
 
@@ -30,7 +29,7 @@ export default function Header({ cart, setIsShoppingCartActive, setSearchValue }
         <input
           type="text"
           placeholder="Search"
-          onChange={(e) => setSearchValue(formatSearchValue(e))}
+          onChange={(e) => setSearchValues(formatSearchValue(e))}
         />
         <div className="search-icon">
           <SearchSVG />

@@ -12,15 +12,15 @@ export default function Store({
   setCart,
   isShoppingCartActive,
   setIsShoppingCartActive,
-  searchValue,
-  setSearchValue,
+  searchValues,
+  setSearchValues,
 }) {
   return (
     <StoreContainer>
       <Header
         cart={cart}
         setIsShoppingCartActive={setIsShoppingCartActive}
-        setSearchValue={setSearchValue}
+        setSearchValues={setSearchValues}
       />
       <Main
         pcParts={pcParts}
@@ -28,7 +28,7 @@ export default function Store({
         setSelectedItems={setSelectedItems}
         cart={cart}
         setCart={setCart}
-        searchValue={searchValue}
+        searchValues={searchValues}
       />
       <Cart
         cart={cart}

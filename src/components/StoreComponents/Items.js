@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
-export default function Items({ pcParts, selectedItems, cart, setCart, searchValue }) {
+export default function Items({ pcParts, selectedItems, cart, setCart, searchValues }) {
   function renderItem(item) {
     const { id, img, name, price } = item
     return (
@@ -23,8 +23,9 @@ export default function Items({ pcParts, selectedItems, cart, setCart, searchVal
   function addToCart(newItem) {
     if (cart.some((item) => item.id === newItem.id)) {
       let newCart = cart
-      let selectedIndex = newCart.findIndex((obj) => obj.id === newItem.id)
 
+      //check if the added item to cart already exists in cart and if so increment the quantity
+      let selectedIndex = newCart.findIndex((oldItem) => oldItem.id === newItem.id)
       if (selectedIndex >= 0) {
         newCart[selectedIndex].quantity = (newCart[selectedIndex].quantity | 0) + 1
       }
@@ -36,11 +37,14 @@ export default function Items({ pcParts, selectedItems, cart, setCart, searchVal
   }
 
   let items
+  //filter items based on selected item category if its selected
   if (selectedItems.length) {
     items = selectedItems.map((itemObj) => {
       return renderItem(itemObj)
     })
-  } else {
+  }
+  //else render all store items
+  else {
     const { cpu, gpu, mobo, ram } = pcParts
 
     const cpuItems = cpu.map((cpuObj) => {
@@ -58,12 +62,24 @@ export default function Items({ pcParts, selectedItems, cart, setCart, searchVal
 
     items = [...cpuItems, ...gpuItems, ...moboItems, ...ramItems]
   }
-  if (searchValue) {
+
+  //filter items based on search bar input if it exists
+  if (searchValues.length) {
     items = items.filter((item) => {
-      const formattedItemName = item.props.children[2].props.children
+      //format item name into an array of characters
+      const itemNameArr = item.props.children[2].props.children
         .toLowerCase()
         .replace(/\s/g, "")
-      if (formattedItemName.includes(searchValue)) {
+        .split("")
+
+      //check if itemNameArr includes all values inside searchValues with .every() method
+      //if true return the item
+      function includesMultipleCharacters(arr, values) {
+        return values.every((value) => {
+          return arr.includes(value)
+        })
+      }
+      if (includesMultipleCharacters(itemNameArr, searchValues)) {
         return item
       }
     })
