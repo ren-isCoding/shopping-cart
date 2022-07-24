@@ -13,12 +13,7 @@ export default function Homepage({
 }) {
   return (
     <HomepageContainer>
-      <Header
-        cart={cart}
-        setCart={setCart}
-        isShoppingCartActive={isShoppingCartActive}
-        setIsShoppingCartActive={setIsShoppingCartActive}
-      />
+      <Header setIsShoppingCartActive={setIsShoppingCartActive} />
       <Main />
       <Cart
         cart={cart}

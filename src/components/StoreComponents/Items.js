@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
-export default function Items({ pcParts, selectedItems, cart, setCart, searchValues }) {
+export default function Items({ pcParts, selectedFilter, cart, setCart, searchValues }) {
   function renderItem(item) {
     const { id, img, name, price } = item
     return (
@@ -30,7 +30,8 @@ export default function Items({ pcParts, selectedItems, cart, setCart, searchVal
         newCart[selectedIndex].quantity = (newCart[selectedIndex].quantity | 0) + 1
       }
       setCart([...newCart])
-    } else {
+    } // else set the items quantity to 1
+    else {
       newItem.quantity = 1
       setCart((prevState) => [...prevState, newItem])
     }
@@ -38,26 +39,26 @@ export default function Items({ pcParts, selectedItems, cart, setCart, searchVal
 
   let items
   //filter items based on selected item category if its selected
-  if (selectedItems.length) {
-    items = selectedItems.map((itemObj) => {
-      return renderItem(itemObj)
+  if (selectedFilter.length) {
+    items = selectedFilter.map((item) => {
+      return renderItem(item)
     })
   }
   //else render all store items
   else {
     const { cpu, gpu, mobo, ram } = pcParts
 
-    const cpuItems = cpu.map((cpuObj) => {
-      return renderItem(cpuObj)
+    const cpuItems = cpu.map((cpu) => {
+      return renderItem(cpu)
     })
-    const gpuItems = gpu.map((gpuObj) => {
-      return renderItem(gpuObj)
+    const gpuItems = gpu.map((gpu) => {
+      return renderItem(gpu)
     })
-    const moboItems = mobo.map((moboObj) => {
-      return renderItem(moboObj)
+    const moboItems = mobo.map((mobo) => {
+      return renderItem(mobo)
     })
-    const ramItems = ram.map((ramObj) => {
-      return renderItem(ramObj)
+    const ramItems = ram.map((ram) => {
+      return renderItem(ram)
     })
 
     items = [...cpuItems, ...gpuItems, ...moboItems, ...ramItems]

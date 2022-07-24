@@ -6,8 +6,8 @@ import Cart from "../CartComponents/Cart"
 
 export default function Store({
   pcParts,
-  selectedItems,
-  setSelectedItems,
+  selectedFilter,
+  setSelectedFilter,
   cart,
   setCart,
   isShoppingCartActive,
@@ -24,8 +24,8 @@ export default function Store({
       />
       <Main
         pcParts={pcParts}
-        selectedItems={selectedItems}
-        setSelectedItems={setSelectedItems}
+        selectedFilter={selectedFilter}
+        setSelectedFilter={setSelectedFilter}
         cart={cart}
         setCart={setCart}
         searchValues={searchValues}

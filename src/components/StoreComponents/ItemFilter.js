@@ -1,28 +1,28 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 
-export default function ItemFilter({ pcParts, setSelectedItems }) {
+export default function ItemFilter({ pcParts, setSelectedFilter }) {
   const { cpu, gpu, mobo, ram } = pcParts
   const [selectedItemsText, setSelectedItemsText] = useState("All Products")
 
   const selectAllProducts = () => {
-    setSelectedItems([])
+    setSelectedFilter([])
     setSelectedItemsText("All Products")
   }
   const selectCpuItems = () => {
-    setSelectedItems(cpu)
+    setSelectedFilter(cpu)
     setSelectedItemsText("Processors")
   }
   const selectGpuItems = () => {
-    setSelectedItems(gpu)
+    setSelectedFilter(gpu)
     setSelectedItemsText("Video Cards")
   }
   const selectMoboItems = () => {
-    setSelectedItems(mobo)
+    setSelectedFilter(mobo)
     setSelectedItemsText("Motherboards")
   }
   const selectRamItems = () => {
-    setSelectedItems(ram)
+    setSelectedFilter(ram)
     setSelectedItemsText("RAM")
   }
 

@@ -7,7 +7,7 @@ import PcPartsList from "./utils/PcPartsList"
 export default function App() {
   const [pcParts, setPcParts] = useState(PcPartsList)
 
-  const [selectedItems, setSelectedItems] = useState([])
+  const [selectedFilter, setSelectedFilter] = useState([])
 
   const data = JSON.parse(localStorage.getItem("my-cart"))
   const [cart, setCart] = useState(data || [])
@@ -39,9 +39,8 @@ export default function App() {
           element={
             <Store
               pcParts={pcParts}
-              setPcParts={setPcParts}
-              selectedItems={selectedItems}
-              setSelectedItems={setSelectedItems}
+              selectedFilter={selectedFilter}
+              setSelectedFilter={setSelectedFilter}
               cart={cart}
               setCart={setCart}
               isShoppingCartActive={isShoppingCartActive}

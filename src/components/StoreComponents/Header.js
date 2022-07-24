@@ -8,15 +8,17 @@ export default function Header({ cart, setIsShoppingCartActive, setSearchValues 
     setIsShoppingCartActive(true)
   }
 
+  //format string to array of characters for easier item filtering
   function formatSearchValue(e) {
     let value = e.target.value
     value = value.replace(/\s/g, "").toLowerCase().split("")
     return value
   }
 
+  //map through the items and sum the returned quantity with reduce method
   const itemsInCart = cart
-    .map((itemObj) => {
-      return itemObj.quantity
+    .map((item) => {
+      return item.quantity
     })
     .reduce((a, b) => a + b, 0)
 

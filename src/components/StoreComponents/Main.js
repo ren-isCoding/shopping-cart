@@ -5,22 +5,18 @@ import Items from "./Items"
 
 export default function Main({
   pcParts,
-  selectedItems,
-  setSelectedItems,
+  selectedFilter,
+  setSelectedFilter,
   cart,
   setCart,
   searchValues,
 }) {
   return (
     <MainContainer>
-      <ItemFilter
-        pcParts={pcParts}
-        selectedItems={selectedItems}
-        setSelectedItems={setSelectedItems}
-      />
+      <ItemFilter pcParts={pcParts} setSelectedFilter={setSelectedFilter} />
       <Items
         pcParts={pcParts}
-        selectedItems={selectedItems}
+        selectedFilter={selectedFilter}
         cart={cart}
         setCart={setCart}
         searchValues={searchValues}
