@@ -68,7 +68,7 @@ export default function Cart({
             </button>
           </div>
           <button className="delete-btn" onClick={(e) => deleteItem(id)}>
-            DELETE
+            Delete
           </button>
           <span className="price">{truePrice} €</span>
         </div>
@@ -114,8 +114,8 @@ export default function Cart({
     >
       <div className="overlay" onClick={(e) => closeCart()}></div>
       <div className="cart">
-        <button className="close-cart-btn" onClick={(e) => closeCart()}>
-          CLOSE
+        <button className="exit-cart-btn" onClick={(e) => closeCart()}>
+          Exit
         </button>
         {cartItems.length ? (
           cartItems
@@ -177,18 +177,17 @@ const CartContainer = styled.div`
     }
   }
 
-  .close-cart-btn {
+  .exit-cart-btn {
     position: sticky;
     top: 1rem;
     align-self: flex-end;
     z-index: 1;
     padding: 0 1rem;
-    transform: scaleY(0.9);
     color: whitesmoke;
     background: #231f20;
     font-weight: 600;
     letter-spacing: 0.1rem;
-    transition: 150ms;
+    transition: 100ms;
 
     &:hover {
       color: lightgray;
@@ -233,7 +232,11 @@ const CartContainer = styled.div`
     padding: 0.3rem 1rem;
     font-weight: 600;
     letter-spacing: 0.1rem;
-    transform: scaleY(0.9);
+    background: #e9e9ed;
+    transition: 100ms;
+    &:hover {
+      background: #d0d0d7;
+    }
   }
 
   .price {
@@ -254,6 +257,11 @@ const CartContainer = styled.div`
       padding: 0rem 1.5rem;
       border: none;
       font-size: 3rem;
+      background: #e9e9ed;
+      transition: 100ms;
+      &:hover {
+        background: #d0d0d7;
+      }
     }
 
     .quantity {
