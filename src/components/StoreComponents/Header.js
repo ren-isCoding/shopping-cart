@@ -1,9 +1,16 @@
-import React from "react"
+import React, { useCallback } from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import SearchSVG from "../../assets/svg/Search"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
 export default function Header({ cart, setIsShoppingCartActive, setSearchValues }) {
+  const navigate = useNavigate()
+  const goToHomepage = useCallback(
+    () => navigate("/homepage", { replace: true }),
+    [navigate]
+  )
+
   function openShoppingCart() {
     setIsShoppingCartActive(true)
   }
@@ -24,9 +31,7 @@ export default function Header({ cart, setIsShoppingCartActive, setSearchValues 
 
   return (
     <HeaderContainer>
-      <h3>
-        <a href="/"> FAKE COMPONENTS</a>
-      </h3>
+      <h3 onClick={goToHomepage}>FAKE COMPONENTS</h3>
       <div className="search-bar">
         <input
           type="text"
@@ -65,6 +70,7 @@ const HeaderContainer = styled.header`
     letter-spacing: 0.7rem;
     font-weight: lighter;
     white-space: nowrap;
+    cursor: pointer;
     a {
       color: inherit;
     }

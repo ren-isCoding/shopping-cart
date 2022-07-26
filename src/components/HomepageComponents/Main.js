@@ -1,16 +1,19 @@
-import React from "react"
+import React, { useCallback } from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import gif from "../../assets/gif/pcBuild.gif"
 
 export default function Main() {
+  const navigate = useNavigate()
+  const goToStore = useCallback(() => navigate("/store", { replace: true }), [navigate])
   return (
     <MainContainer>
       <span className="main-text">BUILD YOUR PC NOW</span>
       <div className="gif-container">
         <img src={gif} />
-        <a href="store" className="shop-btn">
+        <button className="shop-btn" onClick={goToStore}>
           SHOP NOW
-        </a>
+        </button>
       </div>
       <div className="sub-div">
         <span className="sub-text">LATEST AND GREATEST TECH.</span>

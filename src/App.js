@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { HashRouter, Routes, Route } from "react-router-dom"
 import Homepage from "./components/HomepageComponents/Homepage"
 import Store from "./components/StoreComponents/Store"
 import PcPartsList from "./utils/PcPartsList"
@@ -21,10 +21,10 @@ export default function App() {
   }, [cart])
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
-          path="/"
+          path="/homepage"
           element={
             <Homepage
               cart={cart}
@@ -49,8 +49,8 @@ export default function App() {
               setSearchValues={setSearchValues}
             />
           }
-        />
+        ></Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
