@@ -1,3 +1,5 @@
+<a href='https://ren-iscoding.github.io/Shopping-Cart/#/homepage'>Live Preview</a>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
