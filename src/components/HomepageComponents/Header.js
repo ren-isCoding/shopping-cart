@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import SearchSVG from "../../assets/svg/Search"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
 export default function Header({ setIsShoppingCartActive }) {

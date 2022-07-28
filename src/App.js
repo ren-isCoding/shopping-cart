@@ -24,7 +24,8 @@ export default function App() {
     <HashRouter>
       <Routes>
         <Route
-          path="/homepage"
+          index
+          path="/"
           element={
             <Homepage
               cart={cart}
