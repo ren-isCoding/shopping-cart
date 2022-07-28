@@ -1,4 +1,4 @@
-<a href='https://ren-iscoding.github.io/Shopping-Cart/#/homepage'>Live Preview</a>
+<a href='https://ren-iscoding.github.io/shopping-cart'>Live Preview</a>
 
 # Getting Started with Create React App
 
