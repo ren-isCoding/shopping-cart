@@ -6,10 +6,7 @@ import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 
 export default function Header({ cart, setIsShoppingCartActive, setSearchValues }) {
   const navigate = useNavigate()
-  const goToHomepage = useCallback(
-    () => navigate("/shopping-cart", { replace: true }),
-    [navigate]
-  )
+  const goToHomepage = useCallback(() => navigate("/", { replace: true }), [navigate])
 
   function openShoppingCart() {
     setIsShoppingCartActive(true)
