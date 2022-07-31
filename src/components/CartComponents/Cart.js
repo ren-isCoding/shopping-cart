@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import EmptyCart from "./EmptyCart"
+import Footer from "./Footer"
 
 export default function Cart({
   cart,
@@ -13,10 +14,6 @@ export default function Cart({
   function closeCart() {
     setIsShoppingCartActive(false)
     setIsVideoActive(false)
-  }
-
-  function showVideo() {
-    setIsVideoActive(true)
   }
 
   function updateItemQuantity(id, operation) {
@@ -83,17 +80,6 @@ export default function Cart({
     }, 0)
     .toFixed(2)
 
-  const Footer = () => {
-    return (
-      <div className="footer">
-        <button className="checkout-btn" onClick={(e) => showVideo()}>
-          CHECK OUT <span className="checkout-arrow">▶▶</span>
-        </button>
-        <span className="total-price">Total: {totalPrice} €</span>
-      </div>
-    )
-  }
-
   const Video = () => {
     return (
       <iframe
@@ -122,7 +108,9 @@ export default function Cart({
         ) : (
           <EmptyCart setIsShoppingCartActive={setIsShoppingCartActive} />
         )}
-        {cartItems.length ? <Footer /> : null}
+        {cartItems.length ? (
+          <Footer setIsVideoActive={setIsVideoActive} totalPrice={totalPrice} />
+        ) : null}
       </div>
       {isVideoActive ? <Video /> : null}
     </CartContainer>

@@ -1,20 +1,22 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import Header from "./Header"
 import Main from "./Main"
 import Cart from "../CartComponents/Cart"
+import PcPartsList from "../../utils/PcPartsList"
 
 export default function Store({
-  pcParts,
-  selectedFilter,
-  setSelectedFilter,
   cart,
   setCart,
   isShoppingCartActive,
   setIsShoppingCartActive,
-  searchValues,
-  setSearchValues,
 }) {
+  const [pcParts, setPcParts] = useState(PcPartsList)
+
+  const [selectedFilter, setSelectedFilter] = useState([])
+
+  const [searchValues, setSearchValues] = useState([])
+
   return (
     <StoreContainer>
       <Header
