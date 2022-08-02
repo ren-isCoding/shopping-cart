@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Anek Malayalam', sans-serif;
     overflow-x: hidden;
     height: 100vh;
-
+    overflow: hidden;
 
   }
   #root {

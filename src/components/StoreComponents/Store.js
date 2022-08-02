@@ -48,11 +48,11 @@ const StoreContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  gap: 12rem;
-  padding: 0 13rem;
-  padding-top: 10rem;
+  gap: 10rem;
+  padding: 0 12rem;
+  padding-top: 9rem;
 
   @media (max-width: 1200px) {
-    padding: 10%;
+    padding: 8%;
   }
 `

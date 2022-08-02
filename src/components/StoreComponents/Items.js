@@ -64,6 +64,10 @@ export default function Items({ pcParts, selectedFilter, cart, setCart, searchVa
     items = [...cpuItems, ...gpuItems, ...moboItems, ...ramItems]
   }
 
+  function NoItemsFound() {
+    return <h2 className="no-items-found">No Items Found.</h2>
+  }
+
   //filter items based on search bar input if it exists
   if (searchValues.length) {
     items = items.filter((item) => {
@@ -85,17 +89,25 @@ export default function Items({ pcParts, selectedFilter, cart, setCart, searchVa
       }
     })
   }
-  return <Container>{items}</Container>
+  return <Container>{items.length ? items : NoItemsFound()}</Container>
 }
 
 const Container = styled.div`
   display: grid;
+  place-items: center;
+  height: 66rem;
+  min-width: 81.5%;
+  padding: 0 2rem;
+  border-left: solid 0.1rem lightgray;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
   grid-template-columns: repeat(4, 1fr);
   gap: 4rem 3rem;
-  @media (max-width: 1750px) {
+  @media (max-width: 1830px) {
     grid-template-columns: repeat(3, 1fr);
   }
-  @media (max-width: 1400px) {
+  @media (max-width: 1480px) {
     grid-template-columns: repeat(2, 1fr);
   }
   @media (max-width: 700px) {
@@ -158,10 +170,21 @@ const Container = styled.div`
     padding: 0 1rem;
     border-radius: 16px;
     color: white;
-    transition: 150ms ease-in-out;
+    transition: 100ms;
+
+    &:hover {
+      background: #3cc77a;
+    }
+
+    &:active {
+      transform: scale(0.9);
+      background: #3cb371;
+    }
   }
 
-  .add-to-cart-btn:hover {
-    background: #3cc77a;
+  .no-items-found {
+    position: absolute;
+    justify-self: center;
+    align-self: center;
   }
 `
