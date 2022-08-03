@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import ItemFilter from "./ItemFilter"
+import ResponsiveItemFilter from "./ResponsiveItemFilter"
 import Items from "./Items"
 
 export default function Main({
@@ -10,10 +11,18 @@ export default function Main({
   cart,
   setCart,
   searchValues,
+  isResponsiveFilterActive,
+  setIsResponsiveFilterActive,
 }) {
   return (
     <MainContainer>
       <ItemFilter pcParts={pcParts} setSelectedFilter={setSelectedFilter} />
+      <ResponsiveItemFilter
+        pcParts={pcParts}
+        setSelectedFilter={setSelectedFilter}
+        isResponsiveFilterActive={isResponsiveFilterActive}
+        setIsResponsiveFilterActive={setIsResponsiveFilterActive}
+      />
       <Items
         pcParts={pcParts}
         selectedFilter={selectedFilter}

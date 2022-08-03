@@ -17,12 +17,16 @@ export default function Store({
 
   const [searchValues, setSearchValues] = useState([])
 
+  const [isResponsiveFilterActive, setIsResponsiveFilterActive] = useState(false)
+
   return (
     <StoreContainer>
       <Header
         cart={cart}
         setIsShoppingCartActive={setIsShoppingCartActive}
         setSearchValues={setSearchValues}
+        isResponsiveFilterActive={isResponsiveFilterActive}
+        setIsResponsiveFilterActive={setIsResponsiveFilterActive}
       />
       <Main
         pcParts={pcParts}
@@ -31,6 +35,8 @@ export default function Store({
         cart={cart}
         setCart={setCart}
         searchValues={searchValues}
+        isResponsiveFilterActive={isResponsiveFilterActive}
+        setIsResponsiveFilterActive={setIsResponsiveFilterActive}
       />
       <Cart
         cart={cart}

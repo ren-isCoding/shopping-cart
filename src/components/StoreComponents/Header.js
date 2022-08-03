@@ -3,13 +3,24 @@ import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import SearchSVG from "../../assets/svg/Search"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
+import FilterSVG from "../../assets/svg/Filter"
 
-export default function Header({ cart, setIsShoppingCartActive, setSearchValues }) {
+export default function Header({
+  cart,
+  setIsShoppingCartActive,
+  setSearchValues,
+  isResponsiveFilterActive,
+  setIsResponsiveFilterActive,
+}) {
   const navigate = useNavigate()
   const goToHomepage = useCallback(() => navigate("/", { replace: true }), [navigate])
 
   function openShoppingCart() {
     setIsShoppingCartActive(true)
+  }
+
+  function openFilterMenu() {
+    setIsResponsiveFilterActive(true)
   }
 
   //format string to array of characters for easier item filtering
@@ -39,10 +50,16 @@ export default function Header({ cart, setIsShoppingCartActive, setSearchValues 
           <SearchSVG />
         </div>
       </div>
-      <div className="shopping-cart" onClick={(e) => openShoppingCart()}>
-        <ShoppingCartSVG />
-        <p>({itemsInCart})</p>
-        <span>Shopping Cart</span>
+      <div className="flex-div">
+        <div className="filter-btn btn" onClick={(e) => openFilterMenu()}>
+          <span>Filter Items</span>
+          <FilterSVG />
+        </div>
+        <div className="shopping-cart btn" onClick={(e) => openShoppingCart()}>
+          <ShoppingCartSVG />
+          <p>({itemsInCart})</p>
+          <span>Shopping Cart</span>
+        </div>
       </div>
     </HeaderContainer>
   )
@@ -94,7 +111,12 @@ const HeaderContainer = styled.header`
     }
   }
 
-  .shopping-cart {
+  .flex-div {
+    display: flex;
+    gap: 10rem;
+  }
+
+  .btn {
     position: relative;
     display: flex;
     align-items: center;
@@ -102,14 +124,13 @@ const HeaderContainer = styled.header`
     padding: 1rem 2rem;
     padding-top: 0rem;
     cursor: pointer;
-    margin-right: 10rem;
 
     @media (max-width: 1050px) {
       margin: 0;
     }
   }
 
-  .shopping-cart span {
+  .btn span {
     position: absolute;
     font-size: 1.8rem;
     left: 7.5rem;
@@ -118,8 +139,15 @@ const HeaderContainer = styled.header`
     transition: 150ms ease-in-out;
   }
 
-  .shopping-cart:hover span {
+  .btn:hover span {
     left: 90%;
     opacity: 0.9;
+  }
+
+  .filter-btn {
+    display: none;
+    @media (max-width: 1050px) {
+      display: flex;
+    }
   }
 `
