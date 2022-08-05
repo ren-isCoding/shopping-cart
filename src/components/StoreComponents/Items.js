@@ -94,7 +94,6 @@ export default function Items({ pcParts, selectedFilter, cart, setCart, searchVa
 
 const Container = styled.div`
   display: grid;
-  place-items: center;
   height: 66rem;
   min-width: 81.5%;
   padding: 0 2rem;
@@ -112,6 +111,7 @@ const Container = styled.div`
   }
   @media (max-width: 700px) {
     grid-template-columns: repeat(1, 1fr);
+    place-items: center;
   }
 
   .product-div {

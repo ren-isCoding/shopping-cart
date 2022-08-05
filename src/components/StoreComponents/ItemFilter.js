@@ -44,9 +44,6 @@ export default function ItemFilter({ pcParts, setSelectedFilter }) {
 }
 
 const Container = styled.div`
-  @media (max-width: 1050px) {
-    display: none;
-  }
   display: flex;
   flex-direction: column;
   gap: 4rem;
@@ -92,5 +89,9 @@ const Container = styled.div`
   }
   li:hover::after {
     transform: scaleX(1);
+  }
+
+  @media (max-width: 1050px) {
+    display: none;
   }
 `

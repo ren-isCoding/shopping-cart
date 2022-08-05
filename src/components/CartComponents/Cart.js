@@ -170,7 +170,7 @@ const CartContainer = styled.div`
     top: 1rem;
     align-self: flex-end;
     z-index: 1;
-    padding: 0 1rem;
+    padding: 0 4rem;
     color: whitesmoke;
     background: #231f20;
     font-weight: 600;

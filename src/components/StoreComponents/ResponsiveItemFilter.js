@@ -48,7 +48,9 @@ export default function ResponsiveItemFilter({
     >
       <div className="overlay" onClick={(e) => closeFilterMenu()}></div>
       <div className="filter">
-        <button onClick={(e) => closeFilterMenu()}>Exit</button>
+        <button className="exit-btn" onClick={(e) => closeFilterMenu()}>
+          Exit
+        </button>
         <div className="section-title">
           <span>Store/</span>
           <h2>{selectedItemsText}</h2>
@@ -139,6 +141,22 @@ const Container = styled.div`
     }
     li:hover::after {
       transform: scaleX(1);
+    }
+  }
+
+  .exit-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0 4rem;
+    color: whitesmoke;
+    background: #231f20;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    transition: 100ms;
+
+    &:hover {
+      color: lightgray;
     }
   }
 `

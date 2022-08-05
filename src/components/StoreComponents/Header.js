@@ -52,8 +52,8 @@ export default function Header({
       </div>
       <div className="flex-div">
         <div className="filter-btn btn" onClick={(e) => openFilterMenu()}>
-          <span>Filter Items</span>
           <FilterSVG />
+          <span>Filter Items</span>
         </div>
         <div className="shopping-cart btn" onClick={(e) => openShoppingCart()}>
           <ShoppingCartSVG />
@@ -113,6 +113,8 @@ const HeaderContainer = styled.header`
 
   .flex-div {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 10rem;
   }
 
@@ -131,17 +133,25 @@ const HeaderContainer = styled.header`
   }
 
   .btn span {
-    position: absolute;
+    position: relative;
     font-size: 1.8rem;
-    left: 7.5rem;
+    left: -5%;
     opacity: 0;
     white-space: nowrap;
     transition: 150ms ease-in-out;
+    @media (max-width: 1050px) {
+      position: absolute;
+      left: 80%;
+    }
   }
 
   .btn:hover span {
-    left: 90%;
+    left: 0%;
     opacity: 0.9;
+    @media (max-width: 1050px) {
+      position: absolute;
+      left: 90%;
+    }
   }
 
   .filter-btn {
