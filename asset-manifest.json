@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/shopping-cart/static/js/main.0689bd5e.js",
+    "main.js": "/shopping-cart/static/js/main.b1c8498a.js",
     "static/media/pcBuild.gif": "/shopping-cart/static/media/pcBuild.400b6df870c5ab3d76bb.gif",
     "static/media/asus6800xt.webp": "/shopping-cart/static/media/asus6800xt.ae602345bf6072f70bc4.webp",
     "static/media/asusrtx3080.webp": "/shopping-cart/static/media/asusrtx3080.9130e0e4343f1da68ea0.webp",
@@ -26,9 +26,9 @@
     "static/media/intel12600k.webp": "/shopping-cart/static/media/intel12600k.1c771fb8cdfc615b2d9b.webp",
     "static/media/intel12700k.webp": "/shopping-cart/static/media/intel12700k.0d9163288e00fc0837bf.webp",
     "index.html": "/shopping-cart/index.html",
-    "main.0689bd5e.js.map": "/shopping-cart/static/js/main.0689bd5e.js.map"
+    "main.b1c8498a.js.map": "/shopping-cart/static/js/main.b1c8498a.js.map"
   },
   "entrypoints": [
-    "static/js/main.0689bd5e.js"
+    "static/js/main.b1c8498a.js"
   ]
 }
