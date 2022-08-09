@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
+import { v4 } from "uuid"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
+import { NotificationContext } from "../NotificationComponents/NotificationProvider"
 
 export default function Items({ pcParts, selectedFilter, cart, setCart, searchValues }) {
   function renderItem(item) {
@@ -20,6 +22,18 @@ export default function Items({ pcParts, selectedFilter, cart, setCart, searchVa
     )
   }
 
+  const dispatchNotification = useContext(NotificationContext)
+  function createNotification(item) {
+    dispatchNotification({
+      type: "ADD_NOTIFICATION",
+      payload: {
+        id: v4(),
+        color: "green",
+        message: `Added ${item.name} to cart.`,
+      },
+    })
+  }
+
   function addToCart(newItem) {
     if (cart.some((item) => item.id === newItem.id)) {
       let newCart = cart
@@ -35,6 +49,8 @@ export default function Items({ pcParts, selectedFilter, cart, setCart, searchVa
       newItem.quantity = 1
       setCart((prevState) => [...prevState, newItem])
     }
+
+    createNotification(newItem)
   }
 
   let items

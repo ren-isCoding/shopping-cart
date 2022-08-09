@@ -6,32 +6,16 @@ import Notification from "./Notification"
 export const NotificationContext = createContext()
 
 export default function NotificationProvider(props) {
-  const [state, dispatch] = useReducer(
-    (state, action) => {
-      switch (action.type) {
-        case "ADD_NOTIFICATION":
-          return [...state, { ...action.payload }]
-        case "REMOVE_NOTIFICATION":
-          return state.filter((noti) => noti.id !== action.id)
-        default:
-          return state
-      }
-    },
-    [
-      {
-        id: v4(),
-        color: "green",
-        type: "ADD_NOTIFICATION",
-        message: "Added new item to cart.",
-      },
-      {
-        id: v4(),
-        color: "green",
-        type: "ADD_NOTIFICATION",
-        message: "Added 2 new items to cart. ",
-      },
-    ]
-  )
+  const [state, dispatch] = useReducer((state, action) => {
+    switch (action.type) {
+      case "ADD_NOTIFICATION":
+        return [...state, { ...action.payload }]
+      case "REMOVE_NOTIFICATION":
+        return state.filter((noti) => noti.id !== action.id)
+      default:
+        return state
+    }
+  }, [])
 
   return (
     <NotificationContext.Provider value={dispatch}>
