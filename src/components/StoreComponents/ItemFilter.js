@@ -1,69 +1,89 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import styled from "styled-components"
 import { NotificationContext } from "../NotificationComponents/NotificationProvider"
 import { v4 } from "uuid"
+import ResponsiveItemFilter from "./ResponsiveItemFilter"
 
-export default function ItemFilter({ pcParts, setSelectedFilter }) {
+export default function ItemFilter({
+  pcParts,
+  setSelectedFilter,
+  isResponsiveFilterActive,
+  setIsResponsiveFilterActive,
+}) {
   const { cpu, gpu, mobo, ram } = pcParts
   const [selectedItemsText, setSelectedItemsText] = useState("All Products")
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 1050)
+
+  function updateMedia() {
+    setDesktop(window.innerWidth > 1050)
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia)
+    return () => window.removeEventListener("resize", updateMedia)
+  })
 
   const dispatchNotification = useContext(NotificationContext)
   function createNotification(message) {
-    console.log(message)
     dispatchNotification({
       type: "ADD_NOTIFICATION",
       payload: {
         id: v4(),
-        color: "neutral",
+        color: "black",
         message,
       },
     })
   }
 
-  const selectAllProducts = () => {
-    setSelectedFilter([])
-    setSelectedItemsText("All Products")
-    createNotification("Filtered for All Products")
-  }
-  const selectCpuItems = () => {
-    setSelectedFilter(cpu)
-    setSelectedItemsText("Processors")
-    createNotification("Filtered for CPU Products")
-  }
-  const selectGpuItems = () => {
-    setSelectedFilter(gpu)
-    setSelectedItemsText("Video Cards")
-    createNotification("Filtered for GPU Products")
-  }
-  const selectMoboItems = () => {
-    setSelectedFilter(mobo)
-    setSelectedItemsText("Motherboards")
-    createNotification("Filtered for Motherboard Products")
-  }
-  const selectRamItems = () => {
-    setSelectedFilter(ram)
-    setSelectedItemsText("RAM")
-    createNotification("Filtered for RAM Products")
+  function closeFilterMenu() {
+    if (isResponsiveFilterActive) {
+      setIsResponsiveFilterActive(false)
+    }
   }
 
-  return (
-    <Container>
-      <div className="section-title">
-        <span>Store/</span>
-        <h2>{selectedItemsText}</h2>
-      </div>
-      <ul>
-        <li onClick={(e) => selectAllProducts()}>All Products</li>
-        <li onClick={(e) => selectCpuItems()}>Processors</li>
-        <li onClick={(e) => selectGpuItems()}>Video Cards</li>
-        <li onClick={(e) => selectMoboItems()}>Motherboards</li>
-        <li onClick={(e) => selectRamItems()}>RAM</li>
-      </ul>
-    </Container>
+  function filterItems(itemCategory) {
+    closeFilterMenu()
+    if (selectedItemsText === itemCategory) return
+    setSelectedItemsText(itemCategory)
+    createNotification(`Filtered for ${itemCategory}`)
+    if (itemCategory === "All Products") setSelectedFilter(pcParts)
+    if (itemCategory === "Processors") setSelectedFilter(cpu)
+    if (itemCategory === "Video Cards") setSelectedFilter(gpu)
+    if (itemCategory === "Motherboards") setSelectedFilter(mobo)
+    if (itemCategory === "RAM") setSelectedFilter(ram)
+  }
+
+  function DesktopItemFilter() {
+    return (
+      <DesktopContainer>
+        <div className="section-title">
+          <span>Store/</span>
+          <h2>{selectedItemsText}</h2>
+        </div>
+        <ul>
+          <li onClick={(e) => filterItems("All Products")}>All Products</li>
+          <li onClick={(e) => filterItems("Processors")}>Processors</li>
+          <li onClick={(e) => filterItems("Video Cards")}>Video Cards</li>
+          <li onClick={(e) => filterItems("Motherboards")}>Motherboards</li>
+          <li onClick={(e) => filterItems("RAM")}>RAM</li>
+        </ul>
+      </DesktopContainer>
+    )
+  }
+
+  return isDesktop ? (
+    <DesktopItemFilter />
+  ) : (
+    <ResponsiveItemFilter
+      isResponsiveFilterActive={isResponsiveFilterActive}
+      filterItems={filterItems}
+      closeFilterMenu={closeFilterMenu}
+      selectedItemsText={selectedItemsText}
+    />
   )
 }
 
-const Container = styled.div`
+const DesktopContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4rem;
@@ -109,9 +129,5 @@ const Container = styled.div`
   }
   li:hover::after {
     transform: scaleX(1);
-  }
-
-  @media (max-width: 1050px) {
-    display: none;
   }
 `

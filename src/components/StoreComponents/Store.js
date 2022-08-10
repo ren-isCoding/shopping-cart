@@ -25,7 +25,6 @@ export default function Store({
         cart={cart}
         setIsShoppingCartActive={setIsShoppingCartActive}
         setSearchValues={setSearchValues}
-        isResponsiveFilterActive={isResponsiveFilterActive}
         setIsResponsiveFilterActive={setIsResponsiveFilterActive}
       />
       <Main

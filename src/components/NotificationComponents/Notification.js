@@ -43,6 +43,7 @@ export default function Notification({ message, color, dispatch, id }) {
       className={`notification ${color} ${exit ? "exit" : ""}`}
       onMouseEnter={pauseTimer}
       onMouseLeave={startTimer}
+      // onClick={color === "green" ? (e) => console.log("hi") : console.log("no")}
     >
       <p className="message">{message}</p>
       <button className="close-btn" onClick={closeNotification}>

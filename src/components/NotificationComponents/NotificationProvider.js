@@ -1,6 +1,5 @@
 import React, { useReducer, createContext } from "react"
 import styled from "styled-components"
-import { v4 } from "uuid"
 import Notification from "./Notification"
 
 export const NotificationContext = createContext()
@@ -59,7 +58,6 @@ const NotificationContainer = styled.div`
       animation: SlideRight 0.4s;
       animation-fill-mode: forwards;
     }
-
     &.green {
       background: #3cb371;
     }
@@ -69,6 +67,12 @@ const NotificationContainer = styled.div`
     &.red {
     }
     &.red .close-btn {
+    }
+    &.black {
+      background: #231f20;
+    }
+    &.black .close-btn {
+      color: #231f20;
     }
   }
 

@@ -1,45 +1,12 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 
 export default function ResponsiveItemFilter({
-  pcParts,
-  setSelectedFilter,
   isResponsiveFilterActive,
-  setIsResponsiveFilterActive,
+  filterItems,
+  closeFilterMenu,
+  selectedItemsText,
 }) {
-  const { cpu, gpu, mobo, ram } = pcParts
-  const [selectedItemsText, setSelectedItemsText] = useState("All Products")
-
-  function closeFilterMenu() {
-    setIsResponsiveFilterActive(false)
-  }
-
-  const selectAllProducts = () => {
-    setSelectedFilter([])
-    setSelectedItemsText("All Products")
-    closeFilterMenu()
-  }
-  const selectCpuItems = () => {
-    setSelectedFilter(cpu)
-    setSelectedItemsText("Processors")
-    closeFilterMenu()
-  }
-  const selectGpuItems = () => {
-    setSelectedFilter(gpu)
-    setSelectedItemsText("Video Cards")
-    closeFilterMenu()
-  }
-  const selectMoboItems = () => {
-    setSelectedFilter(mobo)
-    setSelectedItemsText("Motherboards")
-    closeFilterMenu()
-  }
-  const selectRamItems = () => {
-    setSelectedFilter(ram)
-    setSelectedItemsText("RAM")
-    closeFilterMenu()
-  }
-
   return (
     <Container
       opacity={isResponsiveFilterActive ? ".8" : "0"}
@@ -56,11 +23,11 @@ export default function ResponsiveItemFilter({
           <h2>{selectedItemsText}</h2>
         </div>
         <ul>
-          <li onClick={(e) => selectAllProducts()}>All Products</li>
-          <li onClick={(e) => selectCpuItems()}>Processors</li>
-          <li onClick={(e) => selectGpuItems()}>Video Cards</li>
-          <li onClick={(e) => selectMoboItems()}>Motherboards</li>
-          <li onClick={(e) => selectRamItems()}>RAM</li>
+          <li onClick={(e) => filterItems("All Products")}>All Products</li>
+          <li onClick={(e) => filterItems("Processors")}>Processors</li>
+          <li onClick={(e) => filterItems("Video Cards")}>Video Cards</li>
+          <li onClick={(e) => filterItems("Motherboards")}>Motherboards</li>
+          <li onClick={(e) => filterItems("RAM")}>RAM</li>
         </ul>
       </div>
     </Container>
@@ -68,10 +35,7 @@ export default function ResponsiveItemFilter({
 }
 
 const Container = styled.div`
-  display: none;
-  @media (max-width: 1050px) {
-    display: flex;
-  }
+  display: flex;
   position: fixed;
   pointer-events: ${(props) => props.pointerEvents};
   right: 0;

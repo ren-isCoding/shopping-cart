@@ -16,8 +16,7 @@ export default function Main({
 }) {
   return (
     <MainContainer>
-      <ItemFilter pcParts={pcParts} setSelectedFilter={setSelectedFilter} />
-      <ResponsiveItemFilter
+      <ItemFilter
         pcParts={pcParts}
         setSelectedFilter={setSelectedFilter}
         isResponsiveFilterActive={isResponsiveFilterActive}

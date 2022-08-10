@@ -9,7 +9,6 @@ export default function Header({
   cart,
   setIsShoppingCartActive,
   setSearchValues,
-  isResponsiveFilterActive,
   setIsResponsiveFilterActive,
 }) {
   const navigate = useNavigate()
