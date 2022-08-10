@@ -1,29 +1,49 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import styled from "styled-components"
+import { NotificationContext } from "../NotificationComponents/NotificationProvider"
+import { v4 } from "uuid"
 
 export default function ItemFilter({ pcParts, setSelectedFilter }) {
   const { cpu, gpu, mobo, ram } = pcParts
   const [selectedItemsText, setSelectedItemsText] = useState("All Products")
 
+  const dispatchNotification = useContext(NotificationContext)
+  function createNotification(message) {
+    console.log(message)
+    dispatchNotification({
+      type: "ADD_NOTIFICATION",
+      payload: {
+        id: v4(),
+        color: "neutral",
+        message,
+      },
+    })
+  }
+
   const selectAllProducts = () => {
     setSelectedFilter([])
     setSelectedItemsText("All Products")
+    createNotification("Filtered for All Products")
   }
   const selectCpuItems = () => {
     setSelectedFilter(cpu)
     setSelectedItemsText("Processors")
+    createNotification("Filtered for CPU Products")
   }
   const selectGpuItems = () => {
     setSelectedFilter(gpu)
     setSelectedItemsText("Video Cards")
+    createNotification("Filtered for GPU Products")
   }
   const selectMoboItems = () => {
     setSelectedFilter(mobo)
     setSelectedItemsText("Motherboards")
+    createNotification("Filtered for Motherboard Products")
   }
   const selectRamItems = () => {
     setSelectedFilter(ram)
     setSelectedItemsText("RAM")
+    createNotification("Filtered for RAM Products")
   }
 
   return (
