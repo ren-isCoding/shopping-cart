@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import ItemFilter from "./ItemFilter"
-import ResponsiveItemFilter from "./ResponsiveItemFilter"
 import Items from "./Items"
 
 export default function Main({
@@ -13,6 +12,8 @@ export default function Main({
   searchValues,
   isResponsiveFilterActive,
   setIsResponsiveFilterActive,
+  selectedItem,
+  setSelectedItem,
 }) {
   return (
     <MainContainer>
@@ -21,6 +22,7 @@ export default function Main({
         setSelectedFilter={setSelectedFilter}
         isResponsiveFilterActive={isResponsiveFilterActive}
         setIsResponsiveFilterActive={setIsResponsiveFilterActive}
+        setSelectedItem={setSelectedItem}
       />
       <Items
         pcParts={pcParts}
@@ -28,6 +30,8 @@ export default function Main({
         cart={cart}
         setCart={setCart}
         searchValues={searchValues}
+        selectedItem={selectedItem}
+        setSelectedItem={setSelectedItem}
       />
     </MainContainer>
   )
@@ -35,6 +39,7 @@ export default function Main({
 
 const MainContainer = styled.div`
   display: flex;
+  height: 100%;
   @media (max-width: 1050px) {
     justify-content: center;
   }

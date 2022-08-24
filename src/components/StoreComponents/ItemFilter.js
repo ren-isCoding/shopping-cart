@@ -9,6 +9,7 @@ export default function ItemFilter({
   setSelectedFilter,
   isResponsiveFilterActive,
   setIsResponsiveFilterActive,
+  setSelectedItem,
 }) {
   const { cpu, gpu, mobo, ram } = pcParts
   const [selectedItemsText, setSelectedItemsText] = useState("All Products")
@@ -43,6 +44,7 @@ export default function ItemFilter({
 
   function filterItems(itemCategory) {
     closeFilterMenu()
+    setSelectedItem(null)
     if (selectedItemsText === itemCategory) return
     setSelectedItemsText(itemCategory)
     createNotification(`Filtered for ${itemCategory}`)

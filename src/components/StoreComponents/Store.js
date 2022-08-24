@@ -13,6 +13,8 @@ export default function Store({
 }) {
   const [pcParts, setPcParts] = useState(PcPartsList)
 
+  const [selectedItem, setSelectedItem] = useState(null)
+
   const [selectedFilter, setSelectedFilter] = useState([])
 
   const [searchValues, setSearchValues] = useState([])
@@ -36,6 +38,8 @@ export default function Store({
         searchValues={searchValues}
         isResponsiveFilterActive={isResponsiveFilterActive}
         setIsResponsiveFilterActive={setIsResponsiveFilterActive}
+        selectedItem={selectedItem}
+        setSelectedItem={setSelectedItem}
       />
       <Cart
         cart={cart}

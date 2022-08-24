@@ -36,6 +36,7 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     flex-grow: 1;
     object-fit: contain;
+    height: 100%;
   }
   h1,
   h2,
@@ -64,6 +65,10 @@ const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
   }
+  svg {
+    pointer-events: none;
+  }
+
 `
 
 export default GlobalStyle

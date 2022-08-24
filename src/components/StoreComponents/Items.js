@@ -1,14 +1,35 @@
-import React, { useContext } from "react"
+import React, { useState, useContext } from "react"
 import styled from "styled-components"
 import { v4 } from "uuid"
 import ShoppingCartSVG from "../../assets/svg/ShoppingCart"
 import { NotificationContext } from "../NotificationComponents/NotificationProvider"
+import goBackSvg from "../../assets/svg/goBack"
 
-export default function Items({ pcParts, selectedFilter, cart, setCart, searchValues }) {
-  function renderItem(item) {
+export default function Items({
+  pcParts,
+  selectedFilter,
+  cart,
+  setCart,
+  searchValues,
+  selectedItem,
+  setSelectedItem,
+}) {
+  const dispatchNotification = useContext(NotificationContext)
+  function createNotification(item) {
+    dispatchNotification({
+      type: "ADD_NOTIFICATION",
+      payload: {
+        id: v4(),
+        color: "green",
+        message: `Added ${item.name} to cart.`,
+      },
+    })
+  }
+
+  function renderItems(item) {
     const { id, img, name, price } = item
     return (
-      <div className="product-div" key={id}>
+      <div className="product-div" key={id} onClick={(e) => handleSelectItem(e, item)}>
         <div className="item-img">
           <img src={img} />
         </div>
@@ -22,16 +43,9 @@ export default function Items({ pcParts, selectedFilter, cart, setCart, searchVa
     )
   }
 
-  const dispatchNotification = useContext(NotificationContext)
-  function createNotification(item) {
-    dispatchNotification({
-      type: "ADD_NOTIFICATION",
-      payload: {
-        id: v4(),
-        color: "green",
-        message: `Added ${item.name} to cart.`,
-      },
-    })
+  function handleSelectItem(e, item) {
+    if (e.target.type === "submit") return
+    else setSelectedItem(item)
   }
 
   function addToCart(newItem) {
@@ -57,7 +71,7 @@ export default function Items({ pcParts, selectedFilter, cart, setCart, searchVa
   //filter items based on selected item category if its selected
   if (selectedFilter.length) {
     items = selectedFilter.map((item) => {
-      return renderItem(item)
+      return renderItems(item)
     })
   }
   //else render all store items
@@ -65,23 +79,19 @@ export default function Items({ pcParts, selectedFilter, cart, setCart, searchVa
     const { cpu, gpu, mobo, ram } = pcParts
 
     const cpuItems = cpu.map((cpu) => {
-      return renderItem(cpu)
+      return renderItems(cpu)
     })
     const gpuItems = gpu.map((gpu) => {
-      return renderItem(gpu)
+      return renderItems(gpu)
     })
     const moboItems = mobo.map((mobo) => {
-      return renderItem(mobo)
+      return renderItems(mobo)
     })
     const ramItems = ram.map((ram) => {
-      return renderItem(ram)
+      return renderItems(ram)
     })
 
     items = [...cpuItems, ...gpuItems, ...moboItems, ...ramItems]
-  }
-
-  function NoItemsFound() {
-    return <h2 className="no-items-found">No Items Found.</h2>
   }
 
   //filter items based on search bar input if it exists
@@ -105,10 +115,96 @@ export default function Items({ pcParts, selectedFilter, cart, setCart, searchVa
       }
     })
   }
-  return <Container>{items.length ? items : NoItemsFound()}</Container>
+
+  function NoItemsFound() {
+    return <h2 className="no-items-found">No Items Found.</h2>
+  }
+
+  function goToStore() {
+    setSelectedItem(null)
+  }
+
+  function ProductPage({ item }) {
+    const { name, price, img } = item
+    return (
+      <ProductContainer>
+        <div className="top">
+          <button className="go-back-btn" onClick={(e) => goToStore()}>
+            {goBackSvg}
+          </button>
+          <div className="top-left">
+            <h2>{name}</h2>
+            <span>{price}€</span>
+          </div>
+          <button className="add-to-cart-btn" onClick={(e) => addToCart(item)}>
+            +
+            <ShoppingCartSVG />
+          </button>
+        </div>
+        <img src={img} />
+      </ProductContainer>
+    )
+  }
+
+  return selectedItem ? (
+    <ProductPage item={selectedItem} />
+  ) : (
+    <GridContainer>{items.length ? items : <NoItemsFound />}</GridContainer>
+  )
 }
 
-const Container = styled.div`
+const ProductContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  gap: 3rem;
+  align-items: center;
+  @media (min-width: 1050px) {
+    margin-right: 20rem;
+  }
+  .top {
+    display: flex;
+    gap: 5rem;
+  }
+  .go-back-btn {
+    display: grid;
+    place-items: center;
+    height: 5rem;
+    padding: 0 3rem;
+    border-radius: 16px;
+    font-size: 3rem;
+    font-weight: bolder;
+    font-family: "Times New Roman", Times, serif;
+  }
+  .add-to-cart-btn {
+    height: 5rem;
+    font-size: 3rem;
+    background: #3cb371;
+    padding: 0 2rem;
+    border-radius: 16px;
+    color: white;
+    white-space: nowrap;
+    transition: 100ms;
+
+    &:hover {
+      background: #3cc77a;
+    }
+
+    &:active {
+      transform: scale(0.9);
+      background: #3cb371;
+    }
+  }
+
+  img {
+    width: 80%;
+    height: 55rem;
+    object-fit: contain;
+  }
+`
+
+const GridContainer = styled.div`
   display: grid;
   height: 66rem;
   min-width: 81.5%;
@@ -128,6 +224,7 @@ const Container = styled.div`
   @media (max-width: 700px) {
     grid-template-columns: repeat(1, 1fr);
     place-items: center;
+    height: 73rem;
   }
 
   .product-div {
