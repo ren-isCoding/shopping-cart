@@ -3,24 +3,12 @@ import bg from "../../assets/img/bg.jpg"
 import styled from "styled-components"
 import Header from "./Header"
 import Main from "./Main"
-import Cart from "../CartComponents/Cart"
 
-export default function Homepage({
-  cart,
-  setCart,
-  isShoppingCartActive,
-  setIsShoppingCartActive,
-}) {
+export default function Homepage({ setIsShoppingCartActive }) {
   return (
     <HomepageContainer>
       <Header setIsShoppingCartActive={setIsShoppingCartActive} />
       <Main />
-      <Cart
-        cart={cart}
-        setCart={setCart}
-        isShoppingCartActive={isShoppingCartActive}
-        setIsShoppingCartActive={setIsShoppingCartActive}
-      />
     </HomepageContainer>
   )
 }

@@ -2,15 +2,9 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import Header from "./Header"
 import Main from "./Main"
-import Cart from "../CartComponents/Cart"
 import PcPartsList from "../../utils/PcPartsList"
 
-export default function Store({
-  cart,
-  setCart,
-  isShoppingCartActive,
-  setIsShoppingCartActive,
-}) {
+export default function Store({ cart, setCart, setIsShoppingCartActive }) {
   const [pcParts, setPcParts] = useState(PcPartsList)
 
   const [selectedItem, setSelectedItem] = useState(null)
@@ -40,12 +34,6 @@ export default function Store({
         setIsResponsiveFilterActive={setIsResponsiveFilterActive}
         selectedItem={selectedItem}
         setSelectedItem={setSelectedItem}
-      />
-      <Cart
-        cart={cart}
-        setCart={setCart}
-        isShoppingCartActive={isShoppingCartActive}
-        setIsShoppingCartActive={setIsShoppingCartActive}
       />
     </StoreContainer>
   )

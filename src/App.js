@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { HashRouter, Routes, Route } from "react-router-dom"
 import Homepage from "./components/HomepageComponents/Homepage"
 import Store from "./components/StoreComponents/Store"
+import Cart from "./components/CartComponents/Cart"
 
 export default function App() {
   const data = JSON.parse(localStorage.getItem("my-cart"))
@@ -14,31 +15,30 @@ export default function App() {
 
   return (
     <HashRouter>
-      <Routes>
-        <Route
-          index
-          path="/"
-          element={
-            <Homepage
-              cart={cart}
-              setCart={setCart}
-              isShoppingCartActive={isShoppingCartActive}
-              setIsShoppingCartActive={setIsShoppingCartActive}
-            />
-          }
-        />
-        <Route
-          path="/store"
-          element={
-            <Store
-              cart={cart}
-              setCart={setCart}
-              isShoppingCartActive={isShoppingCartActive}
-              setIsShoppingCartActive={setIsShoppingCartActive}
-            />
-          }
-        ></Route>
-      </Routes>
+      <Cart
+        cart={cart}
+        setCart={setCart}
+        isShoppingCartActive={isShoppingCartActive}
+        setIsShoppingCartActive={setIsShoppingCartActive}
+      >
+        <Routes>
+          <Route
+            index
+            path="/"
+            element={<Homepage setIsShoppingCartActive={setIsShoppingCartActive} />}
+          />
+          <Route
+            path="/store"
+            element={
+              <Store
+                cart={cart}
+                setCart={setCart}
+                setIsShoppingCartActive={setIsShoppingCartActive}
+              />
+            }
+          ></Route>
+        </Routes>
+      </Cart>
     </HashRouter>
   )
 }

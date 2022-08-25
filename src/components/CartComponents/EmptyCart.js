@@ -19,8 +19,7 @@ export default function EmptyCart({ setIsShoppingCartActive }) {
       <button
         onClick={(e) => {
           closeCart()
-          // if the homepage is loaded close the cart and navigate to store
-          setTimeout(goToStore, 400)
+          goToStore()
         }}
       >
         BROWSE PRODUCTS

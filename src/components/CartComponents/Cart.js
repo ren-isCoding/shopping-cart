@@ -8,6 +8,7 @@ export default function Cart({
   setCart,
   isShoppingCartActive,
   setIsShoppingCartActive,
+  children,
 }) {
   const [isVideoActive, setIsVideoActive] = useState(false)
 
@@ -113,6 +114,7 @@ export default function Cart({
         ) : null}
       </div>
       {isVideoActive ? <Video /> : null}
+      {children}
     </CartContainer>
   )
 }
@@ -120,12 +122,10 @@ export default function Cart({
 const CartContainer = styled.div`
   position: fixed;
   display: flex;
-  pointer-events: ${(props) => props.pointerEvents};
   right: 0;
   left: 0;
   top: 0;
   bottom: 0;
-  z-index: 100;
   justify-content: flex-end;
 
   .video {
@@ -135,6 +135,8 @@ const CartContainer = styled.div`
     z-index: 1;
   }
   .overlay {
+    pointer-events: ${(props) => props.pointerEvents};
+    z-index: 100;
     opacity: ${(props) => props.opacity};
     position: absolute;
     height: 100%;
@@ -144,6 +146,9 @@ const CartContainer = styled.div`
   }
 
   .cart {
+    z-index: 100;
+    height: 100%;
+    position: absolute;
     transition: 500ms;
     transform: translateX(${(props) => props.translate}) !important;
     background: whitesmoke;
