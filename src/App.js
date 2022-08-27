@@ -15,30 +15,29 @@ export default function App() {
 
   return (
     <HashRouter>
+      <Routes>
+        <Route
+          index
+          path="/"
+          element={<Homepage setIsShoppingCartActive={setIsShoppingCartActive} />}
+        />
+        <Route
+          path="/store"
+          element={
+            <Store
+              cart={cart}
+              setCart={setCart}
+              setIsShoppingCartActive={setIsShoppingCartActive}
+            />
+          }
+        ></Route>
+      </Routes>
       <Cart
         cart={cart}
         setCart={setCart}
         isShoppingCartActive={isShoppingCartActive}
         setIsShoppingCartActive={setIsShoppingCartActive}
-      >
-        <Routes>
-          <Route
-            index
-            path="/"
-            element={<Homepage setIsShoppingCartActive={setIsShoppingCartActive} />}
-          />
-          <Route
-            path="/store"
-            element={
-              <Store
-                cart={cart}
-                setCart={setCart}
-                setIsShoppingCartActive={setIsShoppingCartActive}
-              />
-            }
-          ></Route>
-        </Routes>
-      </Cart>
+      />
     </HashRouter>
   )
 }

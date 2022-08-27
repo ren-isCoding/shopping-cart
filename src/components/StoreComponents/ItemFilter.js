@@ -63,11 +63,21 @@ export default function ItemFilter({
           <h2>{selectedItemsText}</h2>
         </div>
         <ul>
-          <li onClick={(e) => filterItems("All Products")}>All Products</li>
-          <li onClick={(e) => filterItems("Processors")}>Processors</li>
-          <li onClick={(e) => filterItems("Video Cards")}>Video Cards</li>
-          <li onClick={(e) => filterItems("Motherboards")}>Motherboards</li>
-          <li onClick={(e) => filterItems("RAM")}>RAM</li>
+          <li onClick={(e) => filterItems("All Products")}>
+            <span>All Products</span>
+          </li>
+          <li onClick={(e) => filterItems("Processors")}>
+            <span>Processors</span>
+          </li>
+          <li onClick={(e) => filterItems("Video Cards")}>
+            <span>Video Cards</span>
+          </li>
+          <li onClick={(e) => filterItems("Motherboards")}>
+            <span>Motherboards</span>
+          </li>
+          <li onClick={(e) => filterItems("RAM")}>
+            <span>RAM</span>
+          </li>
         </ul>
       </DesktopContainer>
     )
@@ -89,7 +99,9 @@ const DesktopContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  margin-right: 10rem;
+  border-right: solid 0.1rem lightgray;
+  padding-right: 10rem;
+  height: 95%;
   span {
     font-weight: 600;
   }
@@ -103,20 +115,21 @@ const DesktopContainer = styled.div`
   }
 
   ul {
+    display: flex;
+    flex-direction: column;
     font-weight: 600;
-    gap: 1rem;
-    width: 15rem;
+    list-style: none;
   }
 
-  li {
+  li span {
     display: inline-block;
     position: relative;
     cursor: pointer;
-    z-index: 2;
+    z-index: 1;
     margin-bottom: 1rem;
   }
 
-  li::after {
+  li span::after {
     content: "";
     background: black;
     position: absolute;
@@ -129,7 +142,7 @@ const DesktopContainer = styled.div`
     transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
     transform-origin: 0 50%;
   }
-  li:hover::after {
+  li span:hover::after {
     transform: scaleX(1);
   }
 `

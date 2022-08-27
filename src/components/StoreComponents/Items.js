@@ -134,7 +134,7 @@ export default function Items({
           </button>
           <div className="top-left">
             <h2>{name}</h2>
-            <span>{price}€</span>
+            <span>Price: {price}€</span>
           </div>
           <button className="add-to-cart-btn" onClick={(e) => addToCart(item)}>
             +
@@ -176,6 +176,11 @@ const ProductContainer = styled.div`
     font-size: 3rem;
     font-weight: bolder;
     font-family: "Times New Roman", Times, serif;
+    background: #e9e9ed;
+    transition: 100ms;
+    &:hover {
+      background: #d0d0d7;
+    }
   }
   .add-to-cart-btn {
     height: 5rem;
@@ -209,7 +214,6 @@ const GridContainer = styled.div`
   height: 66rem;
   min-width: 81.5%;
   padding: 0 2rem;
-  border-left: solid 0.1rem lightgray;
   overflow-x: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;

@@ -12,6 +12,7 @@ export default function ResponsiveItemFilter({
       opacity={isResponsiveFilterActive ? ".8" : "0"}
       pointerEvents={isResponsiveFilterActive ? "all" : "none"}
       translate={isResponsiveFilterActive ? 0 : "-100%"}
+      onClick={(e) => closeFilterMenu()}
     >
       <div className="overlay" onClick={(e) => closeFilterMenu()}></div>
       <div className="filter">
@@ -42,8 +43,8 @@ const Container = styled.div`
   left: 0;
   top: 0;
   bottom: 0;
-  z-index: 100;
   justify-content: flex-start;
+  z-index: 1;
 
   .overlay {
     opacity: ${(props) => props.opacity};
@@ -60,10 +61,10 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     background: whitesmoke;
-    z-index: 1;
     padding: 10% 15%;
     gap: 4rem;
     margin-right: 10rem;
+    z-index: 1;
     span {
       font-weight: 600;
     }

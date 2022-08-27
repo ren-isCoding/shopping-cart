@@ -94,28 +94,29 @@ export default function Cart({
   }
 
   return (
-    <CartContainer
-      opacity={isShoppingCartActive ? ".8" : "0"}
-      pointerEvents={isShoppingCartActive ? "all" : "none"}
-      translate={isShoppingCartActive ? 0 : "100%"}
-    >
-      <div className="overlay" onClick={(e) => closeCart()}></div>
-      <div className="cart">
-        <button className="exit-cart-btn" onClick={(e) => closeCart()}>
-          Exit
-        </button>
-        {cartItems.length ? (
-          cartItems
-        ) : (
-          <EmptyCart setIsShoppingCartActive={setIsShoppingCartActive} />
-        )}
-        {cartItems.length ? (
-          <Footer setIsVideoActive={setIsVideoActive} totalPrice={totalPrice} />
-        ) : null}
-      </div>
-      {isVideoActive ? <Video /> : null}
-      {children}
-    </CartContainer>
+    <>
+      <CartContainer
+        opacity={isShoppingCartActive ? ".8" : "0"}
+        pointerEvents={isShoppingCartActive ? "all" : "none"}
+        translate={isShoppingCartActive ? 0 : "100%"}
+      >
+        <div className="overlay" onClick={(e) => closeCart()}></div>
+        <div className="cart">
+          <button className="exit-cart-btn" onClick={(e) => closeCart()}>
+            Exit
+          </button>
+          {cartItems.length ? (
+            cartItems
+          ) : (
+            <EmptyCart setIsShoppingCartActive={setIsShoppingCartActive} />
+          )}
+          {cartItems.length ? (
+            <Footer setIsVideoActive={setIsVideoActive} totalPrice={totalPrice} />
+          ) : null}
+        </div>
+        {isVideoActive ? <Video /> : null}
+      </CartContainer>
+    </>
   )
 }
 
@@ -127,16 +128,18 @@ const CartContainer = styled.div`
   top: 0;
   bottom: 0;
   justify-content: flex-end;
+  z-index: 1;
+  pointer-events: ${(props) => props.pointerEvents};
 
   .video {
     position: absolute;
     align-self: center;
-    left: 30%;
-    z-index: 1;
+    @media (max-width: 700px) {
+      width: 100%;
+      height: 20rem;
+    }
   }
   .overlay {
-    pointer-events: ${(props) => props.pointerEvents};
-    z-index: 100;
     opacity: ${(props) => props.opacity};
     position: absolute;
     height: 100%;
@@ -146,7 +149,6 @@ const CartContainer = styled.div`
   }
 
   .cart {
-    z-index: 100;
     height: 100%;
     position: absolute;
     transition: 500ms;
@@ -155,9 +157,6 @@ const CartContainer = styled.div`
     opacity: 1;
     width: 60rem;
     padding: 0 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
