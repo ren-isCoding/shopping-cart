@@ -28,8 +28,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Anek Malayalam', sans-serif;
     overflow-x: hidden;
     height: 100vh;
-    overflow: hidden;
-
   }
   #root {
     display: flex;
@@ -68,7 +66,9 @@ const GlobalStyle = createGlobalStyle`
   svg {
     pointer-events: none;
   }
-
+* {
+  scrollbar-width: thin;
+  }
 `
 
 export default GlobalStyle
